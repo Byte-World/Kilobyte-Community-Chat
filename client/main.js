@@ -1,9 +1,13 @@
 var socket = io();
+var username;
+
 $('form').submit(function(){
-  socket.emit('chat message', $('#m').val());
+  socket.emit('chat message', $('#m').val(), username);
   $('#inputMssg').val('');
   return false;
 });
-socket.on('chat message', function(msg){
-  $('#messages').append($('<li>').text(msg));
+
+socket.on('chat message', function(msg, username){
+  var stringMssg = username + ": " + msg;
+  $('#messages').append($('<li>').text(stringMssg));
 });

@@ -1,10 +1,19 @@
 var socket = io();
 var username;
 var page;
-var userList;
+var userList = [];
+var uRoster = $('#userList');
 
-$('form').submit(function(){
-  socket.emit('chat message', $('#inputMssg').val(), username);
+$('form').submit(function () {
+  var mssg = $('#inputMssg').val;
+  if (msgg == null) {
+    clientLog("You may not send blank messages.");
+  } else if (mssg.split(' ')[0] == "/kick") {
+    var kickUser = mssg.split(' ')[1];
+    socket.emit('kick', username, kickUser);
+  } else {
+    socket.emit('chat message', mssg, username);
+  }
   $('#inputMssg').val('');
   return false;
 });
@@ -14,6 +23,17 @@ $('#enter').click(function () {
   checkEnter();
 });
 
+function updateUsers () {
+  for (i = 0; i < userList.length; i++) {
+    uRoster.append("<li>" + userList[i] + "</li>");
+  }
+}
+
+socket.on('checkAdmin' function () {
+  pword = prompt("Enter your admin password:");
+  socket.emit('adminToServer', pword);
+});
+
 socket.on('chat message', function(msg, username){
   var stringMssg = username + ": " + msg;
   $('#messages').append($('<li>').text(stringMssg));
@@ -21,7 +41,8 @@ socket.on('chat message', function(msg, username){
 
 socket.on('logUserEnterRoom' function(username) {
   var log = username + " has entered the chat room.";
-  clientlog(log)
+  clientlog(log);
+  userList.unshift(username);
 });
 
 function signIn() {

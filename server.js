@@ -3,7 +3,9 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = 3000;
 var users = [];
-var adminCodes = ["abc123", "321cba"]
+var adminCodes = ["abc123", "321cba"];
+var commandReady;
+var bannedPeople = [];
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/client/index.html');
@@ -15,8 +17,14 @@ io.on('connection', function(socket){
   });
 
   socket.on('newUser' function(username) {
-    users.push(username);
-    socket.emit('logUserEnterRoom', username);
+    for (i = 0; i < bannedPeople.length; i++) {
+      if (username == baneedPeople[i]) {
+        socket.emit('banned user enter', uName);
+      } else {
+        users.push(username);
+        socket.emit('logUserEnterRoom', username);
+      }
+    }
   });
 
   socket.on('kick' function (username, kickUser) {
@@ -31,6 +39,25 @@ io.on('connection', function(socket){
       }
     }
   });
+
+  (function reCommand() {
+    prompt.get(['severCommand']), function(err, res) {
+      if (res.command == 'kick') {
+        prompt.get(['message'], function (err, res) {
+          result.username.disconnect();
+        });
+      }
+
+      if (res.command == 'ban') {
+        prompt.get(['message'], function (err, res) {
+          result.username.disconnect();
+          bannedPeople.unshift(result.username);
+        });
+      }
+    }
+  });
+
+  })
 });
 
 });
@@ -38,6 +65,8 @@ io.on('connection', function(socket){
 http.listen(port, function(){
   var logMssg = "Server is running on port: " + port;
   console.log(logMssg);
+  console.log("Enter a server command");
+  commandReady = true;
 });
 
 
@@ -76,6 +105,7 @@ socket.on('user has left', function (data) {
     removeUserFromRoster(data.username);
 });
 
+/*
 function newSwitchStyle(css_title) {
   all_link = document.getElementsByTagName("link");
   main_link = all_link[0];
@@ -94,6 +124,7 @@ function newSwitchStyle(css_title) {
 /*function newStyleSwitch(css_href) {
   $(link).attr("href", css_href);
 }*/
+/*
 function switchStyle(css_title) {
   var i, link_tag ;
   for (i = 0, link_tag = document.getElementsByTagName("link") ;
@@ -107,3 +138,4 @@ function switchStyle(css_title) {
     }
   }
 }
+*/

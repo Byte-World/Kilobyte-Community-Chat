@@ -23,6 +23,12 @@ $('#enter').click(function () {
   checkEnter();
 });
 
+socket.on('banned user enter', function (uName) {
+  if (username == uName) {
+    alert('You have been banned.');
+  }
+});
+
 function updateUsers () {
   for (i = 0; i < userList.length; i++) {
     uRoster.append("<li>" + userList[i] + "</li>");

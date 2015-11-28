@@ -35,6 +35,13 @@ function updateUsers () {
   }
 }
 
+
+socket.on('change theme', function (res.theme) {
+  //sendEngineMssg('Changing Global theme...');
+  changeClientTheme(res.theme);
+});
+
+
 socket.on('checkAdmin' function () {
   pword = prompt("Enter your admin password:");
   socket.emit('adminToServer', pword);
@@ -80,6 +87,22 @@ function checkEnter() {
   }
 }
 
+function changeClientTheme () {
+  //Not finished
+}
+
 function clientLog(logMessage) {
   $.('#messages').append($('<li class="logMssg">').text(logMessage));
 }
+
+function kickLog (user) {
+  var mssgLog = user + " has been kicked from the chat room."
+  $('#messages').append($('<li>').text(mssgLog));
+}
+
+/* custom menu toggle
+$('.nav-custom .nav-custom-toggle').on('click', function (e) {
+  e.preventDefault();
+  $(this).parent().toggleClass('nav-custom-open');
+});
+*/

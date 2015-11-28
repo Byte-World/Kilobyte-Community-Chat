@@ -54,6 +54,12 @@ io.on('connection', function(socket){
           bannedPeople.unshift(result.username);
         });
       }
+
+      if (res.command == 'changeGlobalTheme') {
+        prompt.get(['message']), function (err, res) {
+          socket.emit('change theme', res.theme)
+        }
+      }
     }
   });
 

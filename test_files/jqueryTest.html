@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jquery testing</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>Show Text</p>
+      <input id="uname"></input>
+    </div>
+    <button>Click to hide div to enter "chat"</button>
+    <script>
+      $('button').click(function () {
+        var fakeBan = ['hi', 'bye'];
+        var name = $('#uname').val();
+        for (i = 0; i < fakeBan.length; i++) {
+          if (name == fakeBan[i]) {
+            alert('Rooms do not change, uname is banned')
+            i = fakeBan.length + 1;
+          } else {
+            $('div').hide();
+            alert('rooms have transformed');
+            i = fakeBan.length + 1;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Byte-World Chat Alpha</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div class="login-page">
+      <input id="unameEnter"></input>
+      <button id="enterChat">
+      <div class="testLoginButtons">
+        <button id="enterHi">Enter as 'Hi'</button>
+        <button id="enterBye">Enter as 'Bi'</button>
+      </div>
+    </div>
+    <div class="chat-page">
+      <ul id="messages"></ul>
+      <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+      </form>
+    </div>
+  </body>
+</html>

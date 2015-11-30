@@ -1,0 +1,4 @@
+[11/29/2015]
+-Finish server code rewrite
+-Rewrote all neccessary files.
+-Add Switching Room code + ban code;

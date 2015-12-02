@@ -2,3 +2,7 @@
 -Finish server code rewrite
 -Rewrote all neccessary files.
 -Add Switching Room code + ban code;
+[12/1/2015]
+-Added Rooms feature
+-Auto room create
+-Uses /room command

@@ -1,6 +1,7 @@
 var socket = io();
 var page = 'login';
 var username;
+var chatRoom = 'main room';
 var usernameSet = false;
 var bannedNames = ['abc123', 'bye'];
 $('.login-page').show();
@@ -8,14 +9,29 @@ $('.chat-page').hide();
 
 $('form').submit(function () {
   var mssg = $('#inputMssg').val;
-  socket.emit('chat message', mssg, username);
+  if (mssg.split(' ')[0] == '/room') {
+    socket.emit('check rooms', mssg.split(' ')[1]);
+  }
+  socket.emit('chat message', mssg, username, chatRoom);
   $('#inputMssg').val('');
   return false;
 });
 
-socket.on('chat message', function(msg, username){
-  var stringMssg = username + ": " + msg;
-  $('#messages').append($('<li>').text(stringMssg));
+socket.on('chat message', function(msg, username, sendChatRoom) {
+  if (sendChatRoom == chatRoom) {
+    var stringMssg = username + ": " + msg;
+    $('#messages').append($('<li>').text(stringMssg));
+  }
+});
+
+socket.on('room connect success', function (room) {
+  alert('You have successfully connected to the new chat room.');
+  changeRoom(room);
+});
+
+socket.on('create room', function (room) {
+  alert('There is currently no room under the name of ' + room + '. Another room has been created called ' + room + '.');
+  changeRoom(room);
 });
 
 function togglePages() {
@@ -40,4 +56,9 @@ function determineUname(setUname, method) {
       togglePages();
     }
   }
+}
+
+function changeRoom(room) {
+  $('#messages').empty();
+  chatRoom = room;
 }

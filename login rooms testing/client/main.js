@@ -62,3 +62,8 @@ function changeRoom(room) {
   $('#messages').empty();
   chatRoom = room;
 }
+
+$('.nav-side .nav-toggle').on('click', function(event) {
+  event.preventDefault();
+  $(this).parent().toggleClass('nav-open');
+});

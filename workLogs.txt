@@ -6,3 +6,8 @@
 -Added Rooms feature
 -Auto room create
 -Uses /room command
+[12/2/2015]
+-add custom bar
+-css notes
+[12/3/2015]
+-homework

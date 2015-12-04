@@ -1,0 +1,4 @@
+CSS pseudo-element:
+defined with colon
+usually to style a specific part of element, or things like before, after
+double colon notation is to distinguish between pseudo classes and pseudo elements

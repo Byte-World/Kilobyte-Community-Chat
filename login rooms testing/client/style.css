@@ -29,3 +29,54 @@ form button {
 #messages li:nth-child(odd) {
   background: #eee;
 }
+
+body {
+  font: 1em "Helvetica", sans-serif;
+  font-weight: 200;
+}
+
+.wrapper {
+  margin-left: 50px;
+}
+
+.nav-side {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height 100%;
+  width: 100%;
+  max-width: 250px;
+  background-color: black;
+  box-sizing: border-box;
+  padding: 20px;
+  color: white;
+  margin-left: -250px;
+  transition: margin 180ms ease-in-out;
+}
+
+.nav-toggle {
+  position: absolute;
+  right: -40px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  line-height: 40px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.nav-toggle:before {
+  content: "\2192";
+  font-weight: 600;
+  color: #fff;
+}
+
+.nav-side.nav-open {
+  margin-left: 0;
+
+}
+
+.nav-side.nav-open .nav-toggle:before {
+  content: "\2190";
+}

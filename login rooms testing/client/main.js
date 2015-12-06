@@ -11,8 +11,9 @@ $('form').submit(function () {
   var mssg = $('#inputMssg').val;
   if (mssg.split(' ')[0] == '/room') {
     socket.emit('check rooms', mssg.split(' ')[1]);
+  } else {
+    socket.emit('chat message', mssg, username, chatRoom);
   }
-  socket.emit('chat message', mssg, username, chatRoom);
   $('#inputMssg').val('');
   return false;
 });
@@ -66,4 +67,38 @@ function changeRoom(room) {
 $('.nav-side .nav-toggle').on('click', function(event) {
   event.preventDefault();
   $(this).parent().toggleClass('nav-open');
+});
+
+function changeClientTheme(newTheme) {
+  var i, link_tag ;
+  for (i = 0, link_tag = document.getElementsByTagName("link") ;
+    i < link_tag.length ; i++ ) {
+    if ((link_tag[i].rel.indexOf( "stylesheet" ) != -1) &&
+      link_tag[i].title) {
+      link_tag[i].disabled = true ;
+      if (link_tag[i].title == css_title) {
+        link_tag[i].disabled = false ;
+      }
+    }
+  }
+}
+
+function checkNewTheme(theme) {
+  var themeList = ['default', 'test invisible'];
+  for (var i = 0; i < themeList.length; i++) {
+    if (theme == themeList[i]) {
+      i = themeList.length + 1;
+      if (theme == 'test invisible') {
+        alert('fake theme successful');
+      } else {
+        changeClientTheme(theme);
+      }
+    } else {
+      alert('that is not a valid theme');
+    }
+  }
+}
+
+$('#defaultColor').click(function() {
+  checkNewTheme('default');
 });

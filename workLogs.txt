@@ -11,3 +11,12 @@
 -css notes
 [12/3/2015]
 -homework
+[12/5/2015]
+-reading pages 8-68.
+-microsoft css jumpstart notes.
+-added new theme feature client not global
+-new command compatibility
+Goals for 12/6/2015.
+-Add global and client commands via cmd
+-read 4 more chapters in book.
+-Trace template for asiimov other side.

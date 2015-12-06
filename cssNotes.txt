@@ -2,3 +2,30 @@ CSS pseudo-element:
 defined with colon
 usually to style a specific part of element, or things like before, after
 double colon notation is to distinguish between pseudo classes and pseudo elements
+
+Absolute Sizes:
+-Centimeters (cm)
+-Millimeters (mm)
+-Inches (in)
+-Picas (pc) - 12 points or 1/6th of an inch
+-Points (pt) - 1/72nd of an inch
+-Pixels (px) - 1/96th of an inch
+Avoid from cm, mm, in because thos arent consistent throughout all smart devices. pc, pt, px preferred, px is best.
+
+You can also set an absolute size as base for relative sizes.
+Relative sizes
+-em -based on the font size of that current element
+-rem - based on the font size of the html element (16px is default base)
+-ex - height of the font's lowercase x-height.
+-ch - width of the font's 0 character
+
+relative sizes helps changing sizes for different device consistent.
+you can also use screen sizes but not supported in all browsers.
+1vh, would be 1%height, and vw would be height.
+
+positioning elements arrangement on page, using box grid.
+display property determines if and how an element shows up on the page.
+inline elements dont take up entire page
+using visibility none actually just makes element invisible.
+display none actually pretty much gets rid of it
+box elements prefer to have its own line. inline allows it to overlap.

@@ -20,3 +20,13 @@ Goals for 12/6/2015.
 -Add global and client commands via cmd
 -read 4 more chapters in book.
 -Trace template for asiimov other side.
+[12/6/2015]
+10:00
+1:40
+4:00
+7:00
+-Glock 18
+-Reading 3+ chapters.
+-New Client commands
+-CSS notes.
+-Partiall server cmd commands.

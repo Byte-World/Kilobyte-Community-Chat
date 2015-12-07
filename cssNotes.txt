@@ -29,3 +29,13 @@ inline elements dont take up entire page
 using visibility none actually just makes element invisible.
 display none actually pretty much gets rid of it
 box elements prefer to have its own line. inline allows it to overlap.
+box-shadow allows you to give an element have a shadow and its color, and size can be controlled
+the css box model consists of the following, these all count as parts of an element and other elements cant cross over, even the margin.
+margin, border, padding, content
+margin is basically empty space that can seperate an elements internals from other elements.
+border is a line around the element.
+padding is a controlled amount of space inbetween the content and the border.
+content is what you put inside of the element.
+with padding and margin, you can specify which sides of the elements are affect by it.
+float property can allow block elements to be positioned on same row of elements.
+other elements can float around.

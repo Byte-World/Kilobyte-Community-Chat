@@ -24,6 +24,29 @@ io.on('connection', function(socket) {
       }
     }
   });
+
+  (function resendeCommand() {
+    prompt.get(['severCommand']), function(err, res) {
+      if (res.command == 'kick') {
+        prompt.get(['message'], function (err, res) {
+          result.username.disconnect();
+        });
+      }
+
+      if (res.command == 'ban') {
+        prompt.get(['message'], function (err, res) {
+          result.username.disconnect();
+          bannedPeople.unshift(result.username);
+        });
+      }
+
+      if (res.command == 'changeGlobalTheme') {
+        prompt.get(['message']), function (err, res) {
+          socket.emit('change theme', res.theme)
+        }
+      }
+    }
+  });
 });
 
 http.listen(port, function(){

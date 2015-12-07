@@ -11,6 +11,12 @@ $('form').submit(function () {
   var mssg = $('#inputMssg').val;
   if (mssg.split(' ')[0] == '/room') {
     socket.emit('check rooms', mssg.split(' ')[1]);
+  } else if (mssg == '/theme') {
+    chatLog('default');
+    chatLog('fake');
+    chatLog('you can also set theme with the custom bar');
+  } else if (mssg.split(' ')[0] == '/theme') {
+    checkNewTheme(mssg.split(' ')[1]);
   } else {
     socket.emit('chat message', mssg, username, chatRoom);
   }

@@ -28,14 +28,14 @@ Water times: {
 -7:00}
 Work {
 -Glock 18 4h
--Reading Book, 3 Chapters. 1.5h
--Client Theme Commands w/ custom bar to trigger 
--Added cmd ban, global theme, and kick commands. All Programming 2h
+-Reading Book: A Million Shades of Grey, 3 Chapters. 1.5h
+-Client Theme Commands that change stylesheets via commands w/ custom bar to trigger the stylesheets 
+-Added cmd ban, global theme code that triggers the emit from cmd, and kick commands which kick not by admin but cmd. All Programming 2h
 -CSS notes 1.5h}
 Book Summary:
 Y'Tin started out with him cleaning the elephant early in the morning. Then he went to school and at school, some Vietcog soldiers shot the window out of his classroom. He had asked for his own longhouse next to the elephants, but his father didnt let him so he built his own shack. During his dinner, he smelled cooking elephant meat from another clan and wasnt happy because he was so fond of elephants. After that, he had a private talk with his father about taking the elephants and his family into the forest. He said there was going to be a village meeting the next day. Afterwards, he and some other elephant keepers ran into one of Y'Tin's friends and he promised to teach his friend how to take care of elephants.
 -Partiall server cmd commands.
 Goals for 12/7/2015:
--Read 2 more chapters of book.
--Add Global theme code.
--Add color commands.
+-Read 2 more chapters of book: A Million Shades of Gray.
+-Add Code that emits to client to change stylesheets.
+-Add commands that changes name color.

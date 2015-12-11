@@ -66,3 +66,17 @@ Work:
 Paint.net notes/new knowledge:
 -Lasso tool allows you to select certain areas and then make changes to it. This allows you to do things like erase pencil marks on a piece of paper that you wrote on and scanned. That way things like smudges can be removed, then selected with lasso tool, and either deleted, or smudged with the looks of regular paper.
 -Editing text to look like it was written in sand. Create a layer with is the text layer with whatever text you want. Use the depress function to change the scatter radius which will then make it look sandy. Then use the splinter function to blur it allowing it to "sit" in sand. Then emboss the text layer whcih basically allows you to embed the text into the background. Then create other layer and do it vise versa around text to make extra sand that is coming out. Change background hue to make it more like sand, change the darkness to change the "wetness" of sand.
+
+[12/10/2015]
+Work:
+-Homework 1h
+-IXL 25min.
+Water:
+-8:30
+-10:30
+-2:00
+-4:30
+-6:00
+Goals for 12/11/2015:
+-Finish Current c# project.
+-More paint.net effects.

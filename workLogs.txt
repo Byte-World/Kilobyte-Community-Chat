@@ -80,3 +80,21 @@ Water:
 Goals for 12/11/2015:
 -Finish Current c# project.
 -More paint.net effects.
+
+[12/11/2015]
+Work:
+-Read book A Million Shades of Gray 2 chapters 30min.
+-C# fixed for loop and array length error. 1h.
+-Asiimov Designs/Decals on AWP. 20 min.
+Book Summary A Million Shades of Gray:
+Y'Tin after having the talk with his father, he found out that he wouldn't have to go to school anymore, which meant taking care of Lady the Elephant full time. He and Y'Siu and Tomas took there elephants into the jungle where they could stay safe and away from the war. Y'Tin didn't have a hard time packing everything and left into the jungle with them. They were all hiding in the jungle because they wanted to avoid the war and the vietcog soldiers. At one point, Y'Tin had to make a trip back to the village to check on everyone when he noticed fresh footprints on the ground. He followed them a bit and started hearing voices, so he went on to the village and found his family safe. He stayed for a bit but then returned to the jungle where most everyone else was.
+Water:
+-8:30
+-12:00
+-2:00
+-4:10
+Goals for 12/12/2015:
+-Finish 2d array project.
+-Read 3 more chapters of A Million Shades of gray.
+-Glock-18 Handle remake.
+-Start Flip-knife tiger tooth

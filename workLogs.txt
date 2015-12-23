@@ -105,4 +105,5 @@ Goals for 12/13/2015:
 Goals for 12/23/2015:
 -Unpack all my stuff from vacation.
 -Organize unpacked stuff.
--Finish school homework.
+-Finish school homework: Finish writing Science Lab Report, write my Water Tolerance Response sheet, read chapters 8 - 9 of The Witch of Blackbird Pond, do The Witch of Blackbird Pond vocabulary sheet, answer questions 1 - 8, make a prediction for chapter 10.
+-Programming: Create method for seperating the array into tree format.

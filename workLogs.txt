@@ -103,7 +103,6 @@ Goals for 12/13/2015:
 -Edit a head photo.
 -C# classes and nodes.
 Goals for 12/23/2015:
--Unpack all my stuff from vacation.
--Organize unpacked stuff.
--Finish school homework: Finish writing Science Lab Report, write my Water Tolerance Response sheet, read chapters 8 - 9 of The Witch of Blackbird Pond, do The Witch of Blackbird Pond vocabulary sheet, answer questions 1 - 8, make a prediction for chapter 10.
--Programming: Create method for seperating the array into tree format.
+-Unpack all my stuff from vacation and organize it. 15 min.
+-Finish school homework: Finish writing Science Lab Report (2h), write my Water Tolerance Response sheet (25 min.), read chapters 8 - 9 of The Witch of Blackbird Pond(20 min.), do The Witch of Blackbird Pond vocabulary sheet (20 min.), answer questions 1 - 8 (2.5h), make a prediction for chapter 10 (20 min).
+-Programming: Create method for seperating the array into tree format.(1.5 h), if enough time, possibly: create method for reading tree and seperating it. (1.5h)

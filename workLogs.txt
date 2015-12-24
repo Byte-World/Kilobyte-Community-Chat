@@ -106,3 +106,14 @@ Goals for 12/23/2015:
 -Unpack all my stuff from vacation and organize it. 15 min.
 -Finish school homework: Finish writing Science Lab Report (2h), write my Water Tolerance Response sheet (25 min.), read chapters 8 - 9 of The Witch of Blackbird Pond(20 min.), do The Witch of Blackbird Pond vocabulary sheet (20 min.), answer questions 1 - 8 (2.5h), make a prediction for chapter 10 (20 min).
 -Programming: Create method for seperating the array into tree format.(1.5 h), if enough time, possibly: create method for reading tree and seperating it. (1.5h)
+
+[12/23/2015]
+-Unpack all stuff from vacation and organize it. 15 min.
+-School Homework: Wrote Science Lab Report (2h). Do all TWBP stuff (3.5 hours) consist of: Reading ch. 8-9, Vocab section, questions 1-8, prediction for ch. 10.
+Water: 12:00, 3:00, 6:00;
+Goals for 12/23/2015:
+-Write Water Tolerance Response Sheet. (25 min)
+-Create method for seperating the array into tree format.(1.5 h)
+-create method for reading tree and seperating it. (1.5h)
+-Create my own cs go skin with paint.net (2h)
+-Work on next c# project (1.5h)

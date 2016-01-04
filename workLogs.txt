@@ -271,7 +271,7 @@ Schedule For 12/30/2015:
 12:30-1:00; Teaching Skyler Scratch and Giving Mom Music files.
 1:00-3:00; Paint.Net. Cool Metal Effect for Text, Realistic Clouds.
 3:30-4:30; Help Grandma Bake Cookies, Snack Break;
-4:30-5:00; Paint.Net Gradient Blending and Lasso painting.                               Everything 8:20-7:00 Canceled. [Skiing]. 7:00-7:35; Programming, fixing square overlap glitch. 7:35-7:40; Writing Logs
+4:30-5:00; Paint.Net Gradient Blending and Lasso painting.                               Everything 8:20-7:00 Canceled. [Skiing]. 7:00-7:35; Programming, fixing square overlap glitch. 7:35-7:40; Writing Logs.
 5:00-5:15; Break.
 5:15-5:45; Talk with Dad.
 5:45-6:30; Dinner.
@@ -282,4 +282,45 @@ Schedule For 12/30/2015:
 8:50-9:45; If any incomplete work, finish during this time, otherwise, freetime.
 9:45; Sleep.
 
-[12/30/2015]
+[1/1/2016]
+Water:
+-11:00
+-5:00
+-6:30
+
+Today:
+9:30-10:00; Morning Routine.
+10:00-10:30; Mulanting.
+10:30-11:00; Teaching Skyler Scratch.
+11:00-1:00; Lunch Break.
+1:00-2:00; Programming.
+2:00-6:10; Soccer.
+6:10-6:40; Dinner.
+6:40-7:00; Paint.NET Image Text.
+7:00-7:30; IXL;
+7:30
+
+[1/3/2016]
+Water:
+-11:30.
+-3:40.
+-5:00.
+
+Today:
+8:30-1:00; Soccer.
+1:00-2:00; Lunch Break.
+2:00-4:00; Programming, Recording coordinates of Cursor click. Figuring out method for checking what shape click was in.
+4:00-5:00; Snack/Making Smoothie.
+5:00-5:30; IXL.
+5:30-7:00; Dinner Break.
+7:00-7:30; Makeup mulanting.
+7:30-7:45; Writing Logs.
+
+Goals for 1/4/2015:
+9:00-3:30; School.
+3:30-5:00; Finish homework. If extra time. Work on programming, tracking shapes.
+5:00-6:00; Programming unless homework is not finished.
+6:00-7:00; Dinner break.
+7:00-7:30; PDN.
+7:30-7:45; Writing Logs.
+

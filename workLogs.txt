@@ -388,3 +388,18 @@ Today:
 6:00-6:30; Dinner.
 6:30-7:30; Making Shotgun.
 7:30-7:45; Writing Logs.
+
+[1/7/2016]
+Water:
+12:00
+2:00
+4:00
+
+Today:
+9:00-3:30; School
+4:00-4:15; Snack
+4:15-6:00; Homework.
+6:00-7:00; Dinner Break.
+7:00-7:30; Homework.
+7:30-7:40; PDN for homework.
+7:40-7:45; Writing Logs.

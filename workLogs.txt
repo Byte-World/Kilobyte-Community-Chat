@@ -449,4 +449,20 @@ Today:
 5:00-6:00; PDN. Creating Signature
 6:00-7:00; Break.
 7:00-7:40; IXL only 29min.
-7:40-7:45; Writing Logs*
+7:40-7:45; Writing Logs
+
+[1/11/2016]
+Water:
+10:00
+12:00
+2:00
+5:00
+
+Today:
+9:00-4:00; School
+4:00-4:30; Snack
+4:30-4:15; Homework.
+4:15-6:00; Programming, adding cord type; Also looking at Udemy.
+6:00-7:15; Dinner Break.
+7:15-7:40; Programming, fixing line glitch.
+7:40-7:45; Writing Logs.

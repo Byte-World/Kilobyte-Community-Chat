@@ -2,8 +2,8 @@ D:\Visual Studio Projects\fileOpener\fileOpener\bin\Debug\fileOpener.exe.config
 D:\Visual Studio Projects\fileOpener\fileOpener\bin\Debug\fileOpener.exe
 D:\Visual Studio Projects\fileOpener\fileOpener\bin\Debug\fileOpener.pdb
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.csprojResolveAssemblyReference.cache
-D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.Form1.resources
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.Properties.Resources.resources
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.csproj.GenerateResource.Cache
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.exe
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.pdb
+D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.Form1.resources

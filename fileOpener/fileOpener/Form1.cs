@@ -10,17 +10,6 @@ using System.Windows.Forms;
 
 namespace fileOpener
 {
-    public class cord
-    {
-        public int X;
-        public int Y;
-
-        public cord(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-    }
     public partial class Form1 : Form
     {
         public Form1()
@@ -31,6 +20,19 @@ namespace fileOpener
             pictureBox1.MouseUp += pictureBox1_MouseUp;
             pictureBox1.MouseDown += pictureBox1_MouseDown;
             pictureBox1.Click += pictureBox1_Click;
+         
+        }
+
+        public class cord
+        {
+            public int X;
+            public int Y;
+
+            public cord(int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
         }
 
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -39,11 +41,17 @@ namespace fileOpener
 
             string text = "x = " + cursor.X + ", y = " + cursor.Y;
             label1.Text = text;
+            int selectedIn;
+            int brushSize;
 
             if (picBoxClick == true)
             {
-                int selectedIn = comboBox1.SelectedIndex;
-                int brushSize = sizes[selectedIn];
+                selectedIn = comboBox1.SelectedIndex;
+                brushSize = sizes[selectedIn];
+                if (aDown == true)
+                {
+                    brushSize = brushSize * 2;
+                }
                 drawCurrentMarkerSpotCir(cursor, brushSize);
             }
 
@@ -53,9 +61,21 @@ namespace fileOpener
             }
             else
             {
-
+                if (firstMark == false)
+                {
+                    selectedIn = comboBox1.SelectedIndex;
+                    brushSize = sizes[selectedIn];
+                    System.Drawing.Pen customSizeBl = new System.Drawing.Pen(Color.Black, brushSize);
+                    graphics = pictureBox1.CreateGraphics();
+                    graphics.DrawLine(customSizeBl, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                }
+                else
+                {
+                    firstMark = false;
+                }
             }
-            
+            prevCord.X = cursor.X;
+            prevCord.Y = cursor.Y;
         }
 
         void Form1_MouseMove(object sender, MouseEventArgs e)
@@ -74,6 +94,7 @@ namespace fileOpener
         public int[] sizes = new int[10];
         public bool firstMark = true;
         public cord prevCord = new cord(0, 0);
+        public bool aDown = false;
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -94,7 +115,8 @@ namespace fileOpener
         {
             int radius = sizePX / 2;
             graphics = pictureBox1.CreateGraphics();
-            graphics.FillEllipse(blackSol, curPos.X + radius, curPos.Y + radius, sizePX, sizePX);
+            //graphics.FillEllipse(blackSol, curPos.X, curPos.Y, sizePX, sizePX);
+            graphics.FillEllipse(blackSol, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -122,6 +144,22 @@ namespace fileOpener
         void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             picMsUp = true;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A)
+            {
+                aDown = true;
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A)
+            {
+                aDown = false;
+            }
         }
     }
 }

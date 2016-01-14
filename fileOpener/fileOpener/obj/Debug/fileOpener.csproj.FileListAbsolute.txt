@@ -7,3 +7,12 @@ D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.csproj.Gene
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.exe
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.pdb
 D:\Visual Studio Projects\fileOpener\fileOpener\obj\Debug\fileOpener.Form1.resources
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\bin\Debug\fileOpener.exe.config
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\obj\Debug\fileOpener.exe
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\obj\Debug\fileOpener.pdb
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\bin\Debug\fileOpener.exe
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\bin\Debug\fileOpener.pdb
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\obj\Debug\fileOpener.csprojResolveAssemblyReference.cache
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\obj\Debug\fileOpener.Form1.resources
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\obj\Debug\fileOpener.Properties.Resources.resources
+C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\fileOpener\fileOpener\obj\Debug\fileOpener.csproj.GenerateResource.Cache

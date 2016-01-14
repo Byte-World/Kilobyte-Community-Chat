@@ -480,3 +480,18 @@ Today:
 4:40-7:00; Soccer.
 7:00-7:50; Dinner.
 7:50-7:56; Writing Logs.
+
+[1/13/2016]
+Water:
+1:00
+4:00
+7:30
+
+Today:
+9:00-2:30; School.
+2:30-3:00; Snack.
+3:00-5:00; Homework.
+5:00-6:00; PDN 3D text.
+6:00-7:30; Dinner Break.
+7:30-7:40; Testing PDN stuff.
+7:40-7:45; Writing Logs.

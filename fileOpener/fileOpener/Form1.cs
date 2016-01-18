@@ -20,7 +20,7 @@ namespace fileOpener
             pictureBox1.MouseUp += pictureBox1_MouseUp;
             pictureBox1.MouseDown += pictureBox1_MouseDown;
             pictureBox1.Click += pictureBox1_Click;
-         
+            this.KeyDown += Form1_KeyDown;
         }
 
         public class cord
@@ -41,10 +41,10 @@ namespace fileOpener
 
             string text = "x = " + cursor.X + ", y = " + cursor.Y;
             label1.Text = text;
-            int selectedIn;
+            int selectedIn = comboBox1.SelectedIndex;
             int brushSize;
 
-            if (picBoxClick == true)
+            if (picBoxClick == true && selectedIn < 11)
             {
                 selectedIn = comboBox1.SelectedIndex;
                 brushSize = sizes[selectedIn];
@@ -61,7 +61,7 @@ namespace fileOpener
             }
             else
             {
-                if (firstMark == false)
+                if (firstMark == false && selectedIn < 11)
                 {
                     selectedIn = comboBox1.SelectedIndex;
                     brushSize = sizes[selectedIn];

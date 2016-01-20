@@ -35,6 +35,28 @@ namespace fileOpener
             }
         }
 
+        public class allTools
+        {
+            public bool currentlySelected;
+        }
+
+        public class penTool : allTools
+        {
+
+            public penTool()
+            {
+
+            }
+        }
+
+        public class moveTool : allTools
+        {
+            public moveTool()
+            {
+
+            }
+        }
+
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             cord cursor = new cord(e.X, e.Y);
@@ -44,7 +66,7 @@ namespace fileOpener
             int selectedIn = comboBox1.SelectedIndex;
             int brushSize;
 
-            if (picBoxClick == true && selectedIn < 11)
+            if (picBoxClick == true && selectedIn < 11 && fileExists)
             {
                 selectedIn = comboBox1.SelectedIndex;
                 brushSize = sizes[selectedIn];
@@ -61,7 +83,7 @@ namespace fileOpener
             }
             else
             {
-                if (firstMark == false && selectedIn < 11)
+                if (firstMark == false && selectedIn < 11 && fileExists)
                 {
                     selectedIn = comboBox1.SelectedIndex;
                     brushSize = sizes[selectedIn];
@@ -95,11 +117,14 @@ namespace fileOpener
         public bool firstMark = true;
         public cord prevCord = new cord(0, 0);
         public bool aDown = false;
+        public penTool mainPen = new penTool();
+        public bool fileExists = false;
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             graphics = pictureBox1.CreateGraphics();
             graphics.FillRectangle(whiteSol, 0, 0, 2000, 2000);
+            fileExists = true;
 
             for (int i = 0; i < 10; i++)
             {

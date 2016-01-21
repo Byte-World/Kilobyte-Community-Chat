@@ -571,3 +571,26 @@ Goals for 1/20/2016:
 5:00-6:00; Programming.
 6:00-7:00; Dinner Break.
 7:00-7:30; PDN
+
+[1/20/2016]
+Water:
+8:15
+11:00
+1:00
+4:00
+
+Today:
+9:00-2:30; School.
+2:30-3:00; Snack.
+3:00-5:15; Homework: Science Water Observations Response Sheet, Unit Rate Math sheet.
+5:15-6:00; Programming: Added tools class to contain all tool data connected with pen and move tool. Those two classes also added. Pen tool contains color and size. Made radio buttons link up with tool change.
+6:00-7:00; Dinner Break.
+7:00-7:35; IXL
+7:35-7:45; Writing Logs.
+
+Goals for 1/21/2016:
+9:00-4:00; School.
+4:00-6:00; Homework.
+6:00-7:00; Dinner break.
+7:00-7:30; IXL.
+7:30-7:45; Writing Logs

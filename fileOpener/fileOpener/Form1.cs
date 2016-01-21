@@ -35,26 +35,31 @@ namespace fileOpener
             }
         }
 
-        public class allTools
+        public class tools
         {
-            public bool currentlySelected;
+            static Color setColor = Color.Black;
+            static public penTool pen = new penTool(setColor);
+            static public moveTool move = new moveTool();
         }
 
-        public class penTool : allTools
+        public class toolType
         {
+            public bool selected;
+        }
 
-            public penTool()
+        public class penTool : toolType
+        {
+            Color penColor;
+
+            public penTool(Color setPenColor)
             {
-
+                penColor = setPenColor;
             }
         }
 
-        public class moveTool : allTools
+        public class moveTool : toolType
         {
-            public moveTool()
-            {
-
-            }
+            
         }
 
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -117,8 +122,8 @@ namespace fileOpener
         public bool firstMark = true;
         public cord prevCord = new cord(0, 0);
         public bool aDown = false;
-        public penTool mainPen = new penTool();
         public bool fileExists = false;
+        static public tools allTools = new tools();
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -185,6 +190,23 @@ namespace fileOpener
             {
                 aDown = false;
             }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            allTools.pen.selected = true;
+            allTools.move.selected = false;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            allTools.pen.selected = true;
+            allTools.move.selected = false;
+        }
+
+        public void changeTool(string tool)
+        {
+
         }
     }
 }

@@ -40,6 +40,24 @@ namespace fileOpener
             static Color setColor = Color.Black;
             static public penTool pen = new penTool(setColor);
             static public moveTool move = new moveTool();
+
+            public void changeCurrentSet(string nonSelect)
+            {
+                pen.selected = false;
+                move.selected = false;
+
+                if (nonSelect == "pen")
+                {
+                    pen.selected = true;
+                }
+                else
+                {
+                    if (nonSelect == "move")
+                    {
+                        move.selected = true;
+                    }
+                }
+            }
         }
 
         public class toolType
@@ -59,7 +77,7 @@ namespace fileOpener
 
         public class moveTool : toolType
         {
-            
+            int mode = 1;
         }
 
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -131,6 +149,9 @@ namespace fileOpener
             graphics.FillRectangle(whiteSol, 0, 0, 2000, 2000);
             fileExists = true;
 
+            comboBox1.Items.Clear();
+
+            
             for (int i = 0; i < 10; i++)
             {
                 string currentSet;
@@ -165,6 +186,7 @@ namespace fileOpener
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             for (int i = 0; i < sizes.Length; i++)
             {
                 sizes[i] = i + 1;
@@ -194,19 +216,14 @@ namespace fileOpener
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            allTools.pen.selected = true;
-            allTools.move.selected = false;
+            allTools.changeCurrentSet("pen");
+            label3.Text = "Pen";
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            allTools.pen.selected = true;
-            allTools.move.selected = false;
-        }
-
-        public void changeTool(string tool)
-        {
-
+            allTools.changeCurrentSet("move");
+            label3.Text = "Move";
         }
     }
 }

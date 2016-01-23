@@ -37,9 +37,9 @@ namespace fileOpener
 
         public class tools
         {
-            static Color setColor = Color.Black;
-            static public penTool pen = new penTool(setColor);
-            static public moveTool move = new moveTool();
+            static public Color setColor = Color.Black;
+            public penTool pen = new penTool(setColor);
+            public moveTool move = new moveTool();
 
             public void changeCurrentSet(string nonSelect)
             {
@@ -89,7 +89,7 @@ namespace fileOpener
             int selectedIn = comboBox1.SelectedIndex;
             int brushSize;
 
-            if (picBoxClick == true && selectedIn < 11 && fileExists)
+            if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
             {
                 selectedIn = comboBox1.SelectedIndex;
                 brushSize = sizes[selectedIn];
@@ -106,7 +106,7 @@ namespace fileOpener
             }
             else
             {
-                if (firstMark == false && selectedIn < 11 && fileExists)
+                if (firstMark == false && selectedIn < 11 && fileExists && allTools.pen.selected == true)
                 {
                     selectedIn = comboBox1.SelectedIndex;
                     brushSize = sizes[selectedIn];
@@ -186,7 +186,7 @@ namespace fileOpener
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             for (int i = 0; i < sizes.Length; i++)
             {
                 sizes[i] = i + 1;

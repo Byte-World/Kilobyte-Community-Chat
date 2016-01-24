@@ -648,3 +648,34 @@ Goals for 1/23/2016:
 6:00-7:00; Dinner.
 7:00-7:30; IXL.
 7:30-7:45; Writing Logs.
+
+[1/23/2016]
+Water:
+9:00
+11:00
+3:00
+5:30
+
+Today:
+9:00-10:00; Morning Routine.
+10:00-11:00; Programming:     -|
+11:00-1:00; Lunch Break.          |------------- Working on implementing graphics path. Added Cursor Default and Size 1 Default. Sizes Generate on start.
+1:00-2:00; Programming:         -|
+2:00-3:40; Reading Book "PEAK".
+3:40-6:45; Soccer.
+6:45-7:00; Dinner.
+7:00-7:30; IXL.
+7:30-7:45; Writing Logs.
+
+Goals for 1/23/2016:
+9:00-10:00; Morning Routine.
+10:00-11:00; Programming
+11:00-1:00; Lunch Break.
+1:00-2:00; Paint.NET.
+2:00-3:30; Programming.
+3:30-4:00; Snack.
+4:00-5:00; Programming.
+5:00-6:00; Freetime.
+6:00-7:00; Dinner.
+7:00-7:30; IXL.
+7:30-7:45; Writing Logs.

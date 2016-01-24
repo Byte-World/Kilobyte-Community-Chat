@@ -40,11 +40,13 @@ namespace fileOpener
             static public Color setColor = Color.Black;
             public penTool pen = new penTool(setColor);
             public moveTool move = new moveTool();
+            public regCursor cursor = new regCursor();
 
             public void changeCurrentSet(string nonSelect)
             {
                 pen.selected = false;
                 move.selected = false;
+                cursor.selected = false;
 
                 if (nonSelect == "pen")
                 {
@@ -55,6 +57,13 @@ namespace fileOpener
                     if (nonSelect == "move")
                     {
                         move.selected = true;
+                    }
+                    else
+                    {
+                        if (nonSelect == "cursor")
+                        {
+                            cursor.selected = true;
+                        }
                     }
                 }
             }
@@ -77,7 +86,12 @@ namespace fileOpener
 
         public class moveTool : toolType
         {
-            int mode = 1;
+            //int mode = 1;
+        }
+
+        public class regCursor : toolType
+        {
+
         }
 
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -148,19 +162,14 @@ namespace fileOpener
             graphics = pictureBox1.CreateGraphics();
             graphics.FillRectangle(whiteSol, 0, 0, 2000, 2000);
             fileExists = true;
-
-            comboBox1.Items.Clear();
-
-            
-            for (int i = 0; i < 10; i++)
-            {
-                string currentSet;
-                int x = i + 1;
-                currentSet = x.ToString();
-
-                comboBox1.Items.Add(currentSet);
-            }
         }
+
+        public void trackSelection(cord clickedCord)
+        {
+            Bitmap currentPic = new Bitmap(pictureBox1.Image);
+            Color clickedColor = currentPic.GetPixel(clickedCord.X, clickedCord.Y);
+        }
+
 
         public void drawCurrentMarkerSpotCir(cord curPos, int sizePX)
         {
@@ -187,10 +196,23 @@ namespace fileOpener
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            radioButton1.Checked = true;
             for (int i = 0; i < sizes.Length; i++)
             {
                 sizes[i] = i + 1;
             }
+
+            comboBox1.Items.Clear();
+            for (int i = 0; i < 10; i++)
+            {
+                string currentSet;
+                int x = i + 1;
+                currentSet = x.ToString();
+
+                comboBox1.Items.Add(currentSet);
+            }
+
+            comboBox1.SelectedIndex = 0;
         }
 
         void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -214,7 +236,7 @@ namespace fileOpener
             }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             allTools.changeCurrentSet("pen");
             label3.Text = "Pen";
@@ -224,6 +246,12 @@ namespace fileOpener
         {
             allTools.changeCurrentSet("move");
             label3.Text = "Move";
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            allTools.changeCurrentSet("cursor");
+            label3.Text = "Cursor";
         }
     }
 }

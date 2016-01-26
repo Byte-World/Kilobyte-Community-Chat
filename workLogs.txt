@@ -679,3 +679,30 @@ Goals for 1/23/2016:
 6:00-7:00; Dinner.
 7:00-7:30; IXL.
 7:30-7:45; Writing Logs.
+
+[1/25/2016]
+Water:
+8:10
+10:00
+1:00
+2:00
+
+Today:
+9:00-4:00; School.
+4:00-5:00; Homework: Reading WBBP Ch. 19 - Ch.21, Final water observation sheet.
+5:00-5:30; Programming: Added pixel check code.
+5:30-6:00; Creating Skin.
+6:00-7:00; Dinner Break.
+7:00-7:30; Debugging picturebox problem.
+7:30-7:45; Writing Logs.
+
+Goals for 1/25/2016:
+9:00-12:00; School.
+12:00-12:40; Lunch.
+12:40-1:00; My Conference.
+1:00-1:20; Skyler's Conference.
+1:40-3:40; Homework.
+3:40-5:00; Programming.
+5:00-6:00; PDN.
+6:00-7:00; Writing Logs.
+7:00-7:30; Programming.

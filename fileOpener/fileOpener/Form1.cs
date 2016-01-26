@@ -103,6 +103,11 @@ namespace fileOpener
             int selectedIn = comboBox1.SelectedIndex;
             int brushSize;
 
+            if (picBoxClick == true && allTools.move.selected == true)
+            {
+                trackSelection(cursor);
+            }
+
             if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
             {
                 selectedIn = comboBox1.SelectedIndex;
@@ -168,6 +173,145 @@ namespace fileOpener
         {
             Bitmap currentPic = new Bitmap(pictureBox1.Image);
             Color clickedColor = currentPic.GetPixel(clickedCord.X, clickedCord.Y);
+            System.Drawing.Drawing2D.GraphicsPath cPath = new System.Drawing.Drawing2D.GraphicsPath();
+            cPath.StartFigure();
+
+            bool topSame = checkTop(clickedCord);
+            bool bottomSame = checkBottom(clickedCord);
+            bool rightSame = checkRight(clickedCord);
+            bool leftSame = checkLeft(clickedCord);
+            bool topLeftSame = checkTopLeft(clickedCord);
+            bool topRightSame = checkTopRight(clickedCord);
+            bool bottomLeftSame = checkBottomLeft(clickedCord);
+            bool bottomRightSameSame = checkBottomRight(clickedCord);
+        }
+
+        public bool checkTop(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X, currentCord.Y - 1);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool checkBottom(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X, currentCord.Y + 1);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool checkLeft(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X - 1, currentCord.Y);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool checkRight(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X + 1, currentCord.Y);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool checkTopLeft(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X - 1, currentCord.Y - 1);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool checkTopRight(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X + 1, currentCord.Y - 1);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool checkBottomLeft(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X - 1, currentCord.Y + 1);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool checkBottomRight(cord currentCord)
+        {
+            Bitmap picBitmap = new Bitmap(pictureBox1.Image);
+            Color clickedColor = picBitmap.GetPixel(currentCord.X, currentCord.Y);
+            Color testColor = picBitmap.GetPixel(currentCord.X + 1, currentCord.Y + 1);
+
+            if (clickedColor == testColor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

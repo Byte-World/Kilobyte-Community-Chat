@@ -161,6 +161,7 @@ namespace fileOpener
         public bool aDown = false;
         public bool fileExists = false;
         static public tools allTools = new tools();
+        public System.Drawing.Drawing2D.GraphicsPath cPath = new System.Drawing.Drawing2D.GraphicsPath();
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -173,7 +174,6 @@ namespace fileOpener
         {
             Bitmap currentPic = new Bitmap(pictureBox1.Image);
             Color clickedColor = currentPic.GetPixel(clickedCord.X, clickedCord.Y);
-            System.Drawing.Drawing2D.GraphicsPath cPath = new System.Drawing.Drawing2D.GraphicsPath();
             cPath.StartFigure();
 
             bool topSame = checkTop(clickedCord);
@@ -183,7 +183,72 @@ namespace fileOpener
             bool topLeftSame = checkTopLeft(clickedCord);
             bool topRightSame = checkTopRight(clickedCord);
             bool bottomLeftSame = checkBottomLeft(clickedCord);
-            bool bottomRightSameSame = checkBottomRight(clickedCord);
+            bool bottomRightSame = checkBottomRight(clickedCord);
+
+            if (topSame == true)
+            {
+                cord passCord = new cord(clickedCord.X, clickedCord.Y - 1);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+
+            if (bottomSame == true)
+            {
+                cord passCord = new cord(clickedCord.X, clickedCord.Y + 1);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+
+            if (rightSame == true)
+            {
+                cord passCord = new cord(clickedCord.X + 1, clickedCord.Y);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+
+            if (leftSame == true)
+            {
+                cord passCord = new cord(clickedCord.X - 1, clickedCord.Y - 1);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+
+            if (topLeftSame == true)
+            {
+                cord passCord = new cord(clickedCord.X - 1, clickedCord.Y - 1);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+
+            if (topRightSame == true)
+            {
+                cord passCord = new cord(clickedCord.X + 1, clickedCord.Y - 1);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+
+            if (bottomLeftSame == true)
+            {
+                cord passCord = new cord(clickedCord.X - 1, clickedCord.Y + 1);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+
+            if (bottomRightSame == true)
+            {
+                cord passCord = new cord(clickedCord.X + 1, clickedCord.Y + 1);
+                trackSelection(passCord);
+                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
+                cPath.AddRectangle(compRect);
+            }
+            cPath.CloseFigure();
         }
 
         public bool checkTop(cord currentCord)
@@ -339,6 +404,7 @@ namespace fileOpener
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cPath.StartFigure();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             radioButton1.Checked = true;
             for (int i = 0; i < sizes.Length; i++)
@@ -369,6 +435,16 @@ namespace fileOpener
             if (e.KeyCode == Keys.A)
             {
                 aDown = true;
+            }
+
+            if (e.KeyCode == Keys.Left)
+            {
+
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+
             }
         }
 

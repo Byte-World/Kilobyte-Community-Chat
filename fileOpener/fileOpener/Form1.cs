@@ -162,6 +162,21 @@ namespace fileOpener
         public bool fileExists = false;
         static public tools allTools = new tools();
         public System.Drawing.Drawing2D.GraphicsPath cPath = new System.Drawing.Drawing2D.GraphicsPath();
+        public cord[] firstSelectionCords;
+        public cord[] secondSelectionCords;
+
+
+        private void addCords(int arrayNo, cord clickedCord, int penSize, cord topLeftCord)
+        {
+            int runTime = penSize * penSize;
+            cord bottomRightCord = new cord(topLeftCord.X + penSize, topLeftCord.Y + penSize);
+            cord[] possibleCords = new cord[runTime];
+
+            for (var i = 0; i < runTime; i++)
+            {
+
+            }
+        }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -175,7 +190,7 @@ namespace fileOpener
             Bitmap currentPic = new Bitmap(pictureBox1.Image);
             Color clickedColor = currentPic.GetPixel(clickedCord.X, clickedCord.Y);
             cPath.StartFigure();
-
+            /*
             bool topSame = checkSide(clickedColor, clickedCord.X, clickedCord.Y - 1);
             bool bottomSame = checkBottom(clickedCord);
             bool rightSame = checkRight(clickedCord);
@@ -184,7 +199,7 @@ namespace fileOpener
             bool topRightSame = checkTopRight(clickedCord);
             bool bottomLeftSame = checkBottomLeft(clickedCord);
             bool bottomRightSame = checkBottomRight(clickedCord);
-
+            
             if (topSame == true)
             {
                 cord passCord = new cord(clickedCord.X, clickedCord.Y - 1);
@@ -249,6 +264,7 @@ namespace fileOpener
                 cPath.AddRectangle(compRect);
             }
             cPath.CloseFigure();
+            */
         }
 
 
@@ -359,6 +375,21 @@ namespace fileOpener
         {
             allTools.changeCurrentSet("cursor");
             label3.Text = "Cursor";
+        }
+
+
+        private System.Drawing.Drawing2D.GraphicsPath setGraphicsPath(cord[] setCords)
+        {
+            System.Drawing.Drawing2D.GraphicsPath returnPath = new System.Drawing.Drawing2D.GraphicsPath();
+            returnPath.StartFigure();
+
+            for (int i = 0; i < setCords.Length; i++)
+            {
+                Rectangle pixRect = new Rectangle(setCords[i].X, setCords[i].Y, 1, 1);
+                cPath.AddRectangle(pixRect);
+            }
+
+            return returnPath;
         }
     }
 }

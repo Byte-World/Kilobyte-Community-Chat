@@ -129,6 +129,10 @@ namespace fileOpener
                 {
                     selectedIn = comboBox1.SelectedIndex;
                     brushSize = sizes[selectedIn];
+                    if (aDown == true)
+                    {
+                        brushSize = brushSize * 2;
+                    }
                     System.Drawing.Pen customSizeBl = new System.Drawing.Pen(Color.Black, brushSize);
                     graphics = pictureBox1.CreateGraphics();
                     graphics.DrawLine(customSizeBl, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
@@ -164,17 +168,98 @@ namespace fileOpener
         public System.Drawing.Drawing2D.GraphicsPath cPath = new System.Drawing.Drawing2D.GraphicsPath();
         public cord[] firstSelectionCords;
         public cord[] secondSelectionCords;
+        public int strokeNum = 0;
 
 
         private void addCords(int arrayNo, cord clickedCord, int penSize, cord topLeftCord)
         {
             int runTime = penSize * penSize;
             cord bottomRightCord = new cord(topLeftCord.X + penSize, topLeftCord.Y + penSize);
-            cord[] possibleCords = new cord[runTime];
+            cord[] workingCords = new cord[runTime];
+            int properPix = 0;
 
-            for (var i = 0; i < runTime; i++)
+            for (int x = 0; x < penSize; x++)
             {
+                for (int y = 0; y < penSize; y++)
+                {
+                    int currentElement = x * 10 + y;
+                    cord setCord = new cord(topLeftCord.X + x, topLeftCord.Y + y);
+                    workingCords[currentElement] = setCord;
+                }
+            }
 
+            for (int i = 0; i < penSize; i++)
+            {
+                for (int b = 0; b < penSize; b++)
+                {
+                    cord testCord = new cord(topLeftCord.X + i, topLeftCord.Y + b);
+                    bool cordInCircle = insideCircle(topLeftCord, penSize / 2, testCord);
+                    int currentElement = i * 10 + b;
+
+                    if (cordInCircle == true)
+                    {
+                        properPix++;
+                    }
+                    else
+                    {
+                        workingCords[currentElement] = null;
+                    }
+                }
+            }
+        }
+
+        public bool insideCircle(cord circle, int circleR, cord testCord)
+        {
+            int distX = 0;
+            int distY = 0;
+
+            if (circle.X < testCord.X)
+            {
+                distX = testCord.X - circle.X;
+            }
+            else
+            {
+                if (circle.X > testCord.X)
+                {
+                    distX = circle.X - testCord.X;
+                }
+                else
+                {
+                    if (circle.X == testCord.X)
+                    {
+                        distX = 0;
+                    }
+                }
+            }
+
+            if (circle.Y < testCord.Y)
+            {
+                distY = testCord.Y - circle.Y;
+            }
+            else
+            {
+                if (circle.Y > testCord.Y)
+                {
+                    distY = circle.Y - testCord.Y;
+                }
+                else
+                {
+                    if (circle.Y == testCord.Y)
+                    {
+                        distY = 0;
+                    }
+                }
+            }
+
+            int compDist = distX * distX + distY * distY;
+
+            if (compDist == circleR * circleR || compDist < circleR * circleR)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

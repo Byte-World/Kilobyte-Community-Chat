@@ -171,6 +171,72 @@ namespace fileOpener
         public int strokeNum = 0;
 
 
+        private void moveCordsLeft(cord[] currentCords, int pixToMove)
+        {
+            cord[] leftMoveCords = new cord[currentCords.Length];
+            System.Drawing.Drawing2D.GraphicsPath erasePath = new System.Drawing.Drawing2D.GraphicsPath();
+            System.Drawing.Drawing2D.GraphicsPath nextPath = new System.Drawing.Drawing2D.GraphicsPath();
+            erasePath.StartFigure();
+            nextPath.StartFigure();
+
+            for (int i = 0; i < currentCords.Length; i++)
+            {
+                // x - pixToMove
+                cord currentEditCord = new cord(currentCords[i].X, currentCords[i].Y);
+                cord nextCord = new cord(currentEditCord.X - pixToMove, currentEditCord.Y);
+                leftMoveCords[i].X = nextCord.X;
+                leftMoveCords[i].Y = nextCord.Y;
+            }
+
+            for (int b = 0; b < currentCords.Length; b++)
+            {
+                graphics = pictureBox1.CreateGraphics();
+                graphics.FillRectangle(whiteSol, currentCords[b].X, currentCords[b].Y, 1, 1);
+            }
+
+            for (int c = 0; c < currentCords.Length; c++)
+            {
+                graphics = pictureBox1.CreateGraphics();
+                graphics.FillRectangle(blackSol, leftMoveCords[c].X, leftMoveCords[c].Y, 1, 1);
+            }
+
+            nextPath.CloseFigure();
+            erasePath.CloseFigure();
+        }
+
+        private void moveCordsRight(cord[] currentCords, int pixToMove)
+        {
+            cord[] rightMoveCords = new cord[currentCords.Length];
+            System.Drawing.Drawing2D.GraphicsPath erasePath = new System.Drawing.Drawing2D.GraphicsPath();
+            System.Drawing.Drawing2D.GraphicsPath nextPath = new System.Drawing.Drawing2D.GraphicsPath();
+            erasePath.StartFigure();
+            nextPath.StartFigure();
+
+            for (int i = 0; i < currentCords.Length; i++)
+            {
+                // x - pixToMove
+                cord currentEditCord = new cord(currentCords[i].X, currentCords[i].Y);
+                cord nextCord = new cord(currentEditCord.X + pixToMove, currentEditCord.Y);
+                rightMoveCords[i].X = nextCord.X;
+                rightMoveCords[i].Y = nextCord.Y;
+            }
+
+            for (int b = 0; b < currentCords.Length; b++)
+            {
+                graphics = pictureBox1.CreateGraphics();
+                graphics.FillRectangle(whiteSol, currentCords[b].X, currentCords[b].Y, 1, 1);
+            }
+
+            for (int c = 0; c < currentCords.Length; c++)
+            {
+                graphics = pictureBox1.CreateGraphics();
+                graphics.FillRectangle(blackSol, rightMoveCords[c].X, rightMoveCords[c].Y, 1, 1);
+            }
+
+            nextPath.CloseFigure();
+            erasePath.CloseFigure();
+        }
+
         private void addCords(int arrayNo, cord clickedCord, int penSize, cord topLeftCord)
         {
             int runTime = penSize * penSize;
@@ -269,89 +335,6 @@ namespace fileOpener
             graphics.FillRectangle(whiteSol, 0, 0, 2000, 2000);
             fileExists = true;
         }
-
-        public void trackSelection(cord clickedCord)
-        {
-            Bitmap currentPic = new Bitmap(pictureBox1.Image);
-            Color clickedColor = currentPic.GetPixel(clickedCord.X, clickedCord.Y);
-            cPath.StartFigure();
-            /*
-            bool topSame = checkSide(clickedColor, clickedCord.X, clickedCord.Y - 1);
-            bool bottomSame = checkBottom(clickedCord);
-            bool rightSame = checkRight(clickedCord);
-            bool leftSame = checkLeft(clickedCord);
-            bool topLeftSame = checkTopLeft(clickedCord);
-            bool topRightSame = checkTopRight(clickedCord);
-            bool bottomLeftSame = checkBottomLeft(clickedCord);
-            bool bottomRightSame = checkBottomRight(clickedCord);
-            
-            if (topSame == true)
-            {
-                cord passCord = new cord(clickedCord.X, clickedCord.Y - 1);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-
-            if (bottomSame == true)
-            {
-                cord passCord = new cord(clickedCord.X, clickedCord.Y + 1);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-
-            if (rightSame == true)
-            {
-                cord passCord = new cord(clickedCord.X + 1, clickedCord.Y);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-
-            if (leftSame == true)
-            {
-                cord passCord = new cord(clickedCord.X - 1, clickedCord.Y - 1);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-
-            if (topLeftSame == true)
-            {
-                cord passCord = new cord(clickedCord.X - 1, clickedCord.Y - 1);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-
-            if (topRightSame == true)
-            {
-                cord passCord = new cord(clickedCord.X + 1, clickedCord.Y - 1);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-
-            if (bottomLeftSame == true)
-            {
-                cord passCord = new cord(clickedCord.X - 1, clickedCord.Y + 1);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-
-            if (bottomRightSame == true)
-            {
-                cord passCord = new cord(clickedCord.X + 1, clickedCord.Y + 1);
-                trackSelection(passCord);
-                Rectangle compRect = new Rectangle(passCord.X, passCord.Y, 1, 1);
-                cPath.AddRectangle(compRect);
-            }
-            cPath.CloseFigure();
-            */
-        }
-
 
         public bool checkSide(Color currentColor, int currentCordX, int currentCordY)
         {

@@ -94,6 +94,11 @@ namespace fileOpener
 
         }
 
+        public cord[] validCirclePixels()
+        {
+
+        }
+
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             cord cursor = new cord(e.X, e.Y);
@@ -102,11 +107,6 @@ namespace fileOpener
             label1.Text = text;
             int selectedIn = comboBox1.SelectedIndex;
             int brushSize;
-
-            if (picBoxClick == true && allTools.move.selected == true)
-            {
-                trackSelection(cursor);
-            }
 
             if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
             {

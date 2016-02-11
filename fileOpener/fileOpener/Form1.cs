@@ -94,11 +94,6 @@ namespace fileOpener
 
         }
 
-        public cord[] validCirclePixels()
-        {
-
-        }
-
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             cord cursor = new cord(e.X, e.Y);
@@ -202,6 +197,57 @@ namespace fileOpener
 
             nextPath.CloseFigure();
             erasePath.CloseFigure();
+        }
+
+        public cord[] calculateCircle(cord placeClicked, int size)
+        {
+            cord[] validTestCords = new cord[size * size];
+            int radius = size / 2;
+            cord topLeftCord = new cord(placeClicked.X - radius, placeClicked.Y - radius);
+            int allowedAmount = 0;
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int b = 0; b < size; b++)
+                {
+                    cord currentCord = new cord(topLeftCord.X + i, topLeftCord.Y + b);
+                    validTestCords[i * 10 + b].X = currentCord.X;
+                    validTestCords[i * 10 + b].Y = currentCord.Y;
+                }
+            }
+
+            for (int z = 0; 0 < size * size; z++)
+            {
+                cord testInsideCircle = new cord(validTestCords[z].X, validTestCords[z].Y);
+                bool cordInCircle = insideCircle(topLeftCord, radius, testInsideCircle);
+
+                if (cordInCircle == true)
+                {
+                    allowedAmount++;
+                }
+                else
+                {
+                    validTestCords[z] = null;
+                }
+            }
+
+            cord[] realCords = new cord[allowedAmount];
+            int counter = 0;
+
+            for (int h = 0; h < size * size; h++)
+            {
+                if (validTestCords[h] == null) {
+                    validTestCords[h].X = 0;
+                    validTestCords[h].Y = 0;
+                }
+                else
+                {
+                    realCords[counter].X = validTestCords[h].X;
+                    realCords[counter].Y = validTestCords[h].Y;
+                }
+            }
+
+            return realCords;
         }
 
         private void moveCordsRight(cord[] currentCords, int pixToMove)

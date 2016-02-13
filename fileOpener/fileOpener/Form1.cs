@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace fileOpener
 {
@@ -112,11 +113,40 @@ namespace fileOpener
                     brushSize = brushSize * 2;
                 }
                 drawCurrentMarkerSpotCir(cursor, brushSize);
+
+                if (strokeNum == 1)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeANum] = drawnCordsToAdd[i];
+                        currentStrokeANum++;
+                    }
+
+                    firstGPath.AddEllipse(cursor.X, cursor.Y, brushSize, brushSize);
+                }
+
+                if (strokeNum == 2)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeBNum] = drawnCordsToAdd[i];
+                        currentStrokeBNum++;
+                    }
+                }
             }
 
             if (picMsUp == true)
             {
                 picBoxClick = false;
+                strokeNum++;
             }
             else
             {
@@ -152,6 +182,7 @@ namespace fileOpener
         public System.Drawing.SolidBrush whiteSol = new System.Drawing.SolidBrush(Color.White);
         public System.Drawing.Graphics graphics;
         public System.Drawing.SolidBrush blackSol = new System.Drawing.SolidBrush(Color.Black);
+        public System.Drawing.Pen blackPen = new System.Drawing.Pen(Color.Black, 1);
         public bool picBoxClick = false;
         public bool picMsUp = true;
         public int[] sizes = new int[10];
@@ -163,8 +194,14 @@ namespace fileOpener
         public System.Drawing.Drawing2D.GraphicsPath cPath = new System.Drawing.Drawing2D.GraphicsPath();
         public cord[] firstSelectionCords;
         public cord[] secondSelectionCords;
-        public int strokeNum = 0;
+        public int strokeNum = 1;
+        public cord[] currentStrokeCordsA;
+        public int currentStrokeANum = 0;
+        public cord[] currentStrokeCordsB;
+        public int currentStrokeBNum = 0;
+        GraphicsPath firstGPath = new GraphicsPath();
 
+        
 
         private void moveCordsLeft(cord[] currentCords, int pixToMove)
         {
@@ -197,6 +234,37 @@ namespace fileOpener
 
             nextPath.CloseFigure();
             erasePath.CloseFigure();
+        }
+
+        public int[] rectParams = new int[4];
+
+        public void generateRectangle()
+        {
+            if (fileExists == true)
+            {
+                GraphicsPath rectangle = new GraphicsPath();
+
+                rectangle.StartFigure();
+
+                Rectangle setRect = new Rectangle(130, 130, 100, 100);
+                rectangle.AddRectangle(setRect);
+
+                rectangle.CloseFigure();
+
+                graphics = pictureBox1.CreateGraphics();
+                graphics.DrawRectangle(blackPen, setRect);
+            }
+        }
+
+
+        public int[] polyGonArray = new int[];
+        public void generatePolygon()
+        {
+            if (fileExists == true)
+            {
+                graphics = pictureBox1.CreateGraphics();
+                graphics.DrawPolygon();
+            }
         }
 
         public cord[] calculateCircle(cord placeClicked, int size)
@@ -249,6 +317,8 @@ namespace fileOpener
 
             return realCords;
         }
+
+        
 
         private void moveCordsRight(cord[] currentCords, int pixToMove)
         {
@@ -421,6 +491,7 @@ namespace fileOpener
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            firstGPath.StartFigure();
             cPath.StartFigure();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             radioButton1.Checked = true;
@@ -504,6 +575,11 @@ namespace fileOpener
             }
 
             return returnPath;
+        }
+
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            generateRectangle();
         }
     }
 }

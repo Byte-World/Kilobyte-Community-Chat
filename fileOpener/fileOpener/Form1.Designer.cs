@@ -31,6 +31,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.movementShapesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rectangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.randomPolyGonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -41,11 +46,6 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.movementShapesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rectangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.randomPolyGonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -74,9 +74,48 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // testingToolStripMenuItem
+            // 
+            this.testingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generateToolStripMenuItem});
+            this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
+            this.testingToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.testingToolStripMenuItem.Text = "Testing";
+            // 
+            // generateToolStripMenuItem
+            // 
+            this.generateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.movementShapesToolStripMenuItem});
+            this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
+            this.generateToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.generateToolStripMenuItem.Text = "Generate";
+            // 
+            // movementShapesToolStripMenuItem
+            // 
+            this.movementShapesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rectangleToolStripMenuItem,
+            this.randomPolyGonToolStripMenuItem});
+            this.movementShapesToolStripMenuItem.Name = "movementShapesToolStripMenuItem";
+            this.movementShapesToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.movementShapesToolStripMenuItem.Text = "Movement Shapes";
+            // 
+            // rectangleToolStripMenuItem
+            // 
+            this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.rectangleToolStripMenuItem.Text = "Rectangle";
+            this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
+            // 
+            // randomPolyGonToolStripMenuItem
+            // 
+            this.randomPolyGonToolStripMenuItem.Name = "randomPolyGonToolStripMenuItem";
+            this.randomPolyGonToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.randomPolyGonToolStripMenuItem.Text = "Random PolyGon";
+            this.randomPolyGonToolStripMenuItem.Click += new System.EventHandler(this.randomPolyGonToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -169,44 +208,6 @@
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "label3";
-            // 
-            // testingToolStripMenuItem
-            // 
-            this.testingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generateToolStripMenuItem});
-            this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
-            this.testingToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
-            this.testingToolStripMenuItem.Text = "Testing";
-            // 
-            // generateToolStripMenuItem
-            // 
-            this.generateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.movementShapesToolStripMenuItem});
-            this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
-            this.generateToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.generateToolStripMenuItem.Text = "Generate";
-            // 
-            // movementShapesToolStripMenuItem
-            // 
-            this.movementShapesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rectangleToolStripMenuItem,
-            this.randomPolyGonToolStripMenuItem});
-            this.movementShapesToolStripMenuItem.Name = "movementShapesToolStripMenuItem";
-            this.movementShapesToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
-            this.movementShapesToolStripMenuItem.Text = "Movement Shapes";
-            // 
-            // rectangleToolStripMenuItem
-            // 
-            this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
-            this.rectangleToolStripMenuItem.Text = "Rectangle";
-            this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
-            // 
-            // randomPolyGonToolStripMenuItem
-            // 
-            this.randomPolyGonToolStripMenuItem.Name = "randomPolyGonToolStripMenuItem";
-            this.randomPolyGonToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
-            this.randomPolyGonToolStripMenuItem.Text = "Random PolyGon";
             // 
             // Form1
             // 

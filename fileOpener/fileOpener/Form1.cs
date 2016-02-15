@@ -182,7 +182,12 @@ namespace fileOpener
         public System.Drawing.SolidBrush whiteSol = new System.Drawing.SolidBrush(Color.White);
         public System.Drawing.Graphics graphics;
         public System.Drawing.SolidBrush blackSol = new System.Drawing.SolidBrush(Color.Black);
+        public System.Drawing.SolidBrush blueSol = new System.Drawing.SolidBrush(Color.Blue);
+        public System.Drawing.SolidBrush redSol = new System.Drawing.SolidBrush(Color.Red);
+        public System.Drawing.SolidBrush magentaSol = new System.Drawing.SolidBrush(Color.Magenta);
         public System.Drawing.Pen blackPen = new System.Drawing.Pen(Color.Black, 1);
+        public System.Drawing.Pen whitePen = new System.Drawing.Pen(Color.White, 1);
+        public System.Drawing.Pen bluePen = new System.Drawing.Pen(Color.Blue, 1);
         public bool picBoxClick = false;
         public bool picMsUp = true;
         public int[] sizes = new int[10];
@@ -237,6 +242,7 @@ namespace fileOpener
         }
 
         public int[] rectParams = new int[4];
+        public bool rectSet = false;
 
         public void generateRectangle()
         {
@@ -246,25 +252,105 @@ namespace fileOpener
 
                 rectangle.StartFigure();
 
-                Rectangle setRect = new Rectangle(130, 130, 100, 100);
+                Rectangle setRect = new Rectangle(rectParams[0], rectParams[1], rectParams[2], rectParams[3]);
                 rectangle.AddRectangle(setRect);
 
                 rectangle.CloseFigure();
 
                 graphics = pictureBox1.CreateGraphics();
-                graphics.DrawRectangle(blackPen, setRect);
+                graphics.FillRectangle(blueSol, setRect);
+                rectSet = true;
             }
         }
 
+        //Rectangle is blue (blueSol), Polygon is red (redSol), overlap is magenta (magentaSol). Blank is white (whiteSol).
 
-        public int[] polyGonArray = new int[];
+        public void moveRectangle()
+        {
+            if (rectSet == true) {
+                Rectangle prevRect = new Rectangle(rectParams[0], rectParams[1], rectParams[2], rectParams[3]);
+                rectParams[0] = rectParams[0] + 5;
+
+                Rectangle currentRect = new Rectangle(rectParams[0], rectParams[1], rectParams[2], rectParams[3]);
+
+                graphics = pictureBox1.CreateGraphics();
+                graphics.FillRectangle(whiteSol, prevRect);
+
+                updatePolygon();
+
+                graphics.FillRectangle(blueSol, currentRect);
+            }
+        }
+
+        public Point[] polyGonArray = new Point[5];
         public void generatePolygon()
         {
             if (fileExists == true)
             {
                 graphics = pictureBox1.CreateGraphics();
-                graphics.DrawPolygon();
+                //graphics.DrawPolygon();
+                graphics.FillPolygon(redSol, polyGonArray);
             }
+        }
+
+        public void movePolyGon()
+        {
+            Point[] prevPoints = new Point[5];
+
+            for (int b = 0; b < prevPoints.Length; b++)
+            {
+                prevPoints[b].X = polyGonArray[b].X;
+                prevPoints[b].Y = polyGonArray[b].Y;
+            }
+
+            for (int i = 0; i < polyGonArray.Length; i++)
+            {
+                polyGonArray[i].X = polyGonArray[i].X - 5;
+            }
+
+            graphics = pictureBox1.CreateGraphics();
+            graphics.FillPolygon(whiteSol, prevPoints);
+
+            updateRect();
+            
+            graphics.FillPolygon(redSol, polyGonArray);
+        }
+
+        public void checkShapeOverlap()
+        {
+            GraphicsPath rectPath = new GraphicsPath();
+            rectPath.StartFigure();
+
+            Rectangle currentRect = new Rectangle(rectParams[0], rectParams[1], rectParams[2], rectParams[3]);
+            rectPath.AddRectangle(currentRect);
+            rectPath.CloseFigure();
+
+            Region rectangleRegion = new Region(rectPath);
+
+            GraphicsPath polyPath = new GraphicsPath();
+            polyPath.StartFigure();
+
+            polyPath.AddPolygon(polyGonArray);
+            polyPath.CloseFigure();
+
+            Region polyRegion = new Region(polyPath);
+
+            rectangleRegion.Intersect(polyRegion);
+
+            graphics = pictureBox1.CreateGraphics();
+            graphics.FillRegion(magentaSol, rectangleRegion);
+        }
+
+        public void updateRect()
+        {
+            graphics = pictureBox1.CreateGraphics();
+            graphics.FillRectangle(blueSol, rectParams[0], rectParams[1], rectParams[2], rectParams[3]);
+        }
+
+        public void updatePolygon()
+        {
+            graphics = pictureBox1.CreateGraphics();
+            graphics.FillPolygon(redSol, polyGonArray);
         }
 
         public cord[] calculateCircle(cord placeClicked, int size)
@@ -491,6 +577,21 @@ namespace fileOpener
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            rectParams[0] = 130;
+            rectParams[1] = 140;
+            rectParams[2] = 100;
+            rectParams[3] = 100;
+            polyGonArray[0].X = 642;
+            polyGonArray[0].Y = 111;
+            polyGonArray[1].X = 714;
+            polyGonArray[1].Y = 176;
+            polyGonArray[2].X = 661;
+            polyGonArray[2].Y = 241;
+            polyGonArray[3].X = 832;
+            polyGonArray[3].Y = 243;
+            polyGonArray[4].X = 824;
+            polyGonArray[4].Y = 104;
+
             firstGPath.StartFigure();
             cPath.StartFigure();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -527,12 +628,14 @@ namespace fileOpener
 
             if (e.KeyCode == Keys.Left)
             {
-
+                movePolyGon();
+                checkShapeOverlap();
             }
 
             if (e.KeyCode == Keys.Right)
             {
-
+                moveRectangle();
+                checkShapeOverlap();
             }
         }
 
@@ -580,6 +683,11 @@ namespace fileOpener
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             generateRectangle();
+        }
+
+        private void randomPolyGonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            generatePolygon();
         }
     }
 }

@@ -82,5 +82,63 @@ namespace displayImage
             Bitmap croppedPiece = cropImagePiece(cropRect, pictureBoxPic);
             pictureBox2.Image = croppedPiece;
         }
+
+        public void resizeImage(float percRight, float percDown, Bitmap prevImage, int leftCord, int rightCord)
+        {
+            /*
+            float width = prevImage.Width * percRight;
+            float height = prevImage.Height * percDown;
+
+            float[] rectParams = new float[4];
+
+            rectParams[1] = leftCord;
+            rectParams[2] = rightCord;
+            rectParams[3] = width;
+            rectParams[4] = height;
+
+            return rectParams;
+            */
+            //When using this method, change void to float[].
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            /*
+            float widthPerc = float.Parse(textBox1.Text);
+            float heightPerc = float.Parse(textBox2.Text);
+
+            int xCord = 31;
+            int yCord = 344;
+
+            float[] pasteRect = resizeImage(widthPerc, heightPerc, pictureBoxPic, xCord, yCord);
+
+            Graphics box3G = pictureBox3.CreateGraphics();
+            //box3G.System.Drawing.Graphics.DrawImage(pictureBoxPic, pasteRect, GraphicsUnit.Pixel);
+
+            int roundedWidth = (int)Math.Round(pasteRect[3], 0);
+            int roundedHeight = (int)Math.Round(pasteRect[4], 0);
+
+            Bitmap newPic = new Bitmap(roundedWidth, roundedHeight);
+            newPic = pictureBoxPic;
+
+            pictureBox3.Image = newPic;
+            **/
+            scaleImage(pictureBoxPic);
+        }
+
+        public void scaleImage(Bitmap originalImage)
+        {
+            float widthPercent = float.Parse(textBox1.Text);
+            float heightPercent = float.Parse(textBox2.Text);
+            float widthMultiplied = widthPercent * originalImage.Width;
+            float heightMultiplied = heightPercent * originalImage.Height;
+            int roundedWidth = (int)Math.Round(widthMultiplied, 0);
+            int roundedHeight = (int)Math.Round(heightMultiplied, 0);
+            Bitmap scaledPic = new Bitmap(roundedWidth, roundedHeight);
+            using (Graphics graphics = pictureBox3.CreateGraphics())
+            {
+                graphics.DrawImage(originalImage, new Rectangle(0, 0, scaledPic.Width, scaledPic.Height));
+            }
+        }
     }
 }

@@ -1048,3 +1048,36 @@ Goals for 2/13/2016:
 8:00-8:15; Shower.
 8:15-8:45; Dinner.
 8:45-9:00; Writing Logs.
+
+[2/15/2016]
+Water:
+7:00
+12:00
+3:00
+5:00
+
+Today:
+11:30-12:00; Programming: Scaling Image code.
+12:00-1:00; Lunch Break.
+1:00-3:00; Sleep.
+3:00-4:30; Practicing Infomercial speech w/ friends. Editing the script.
+4:30-5:00; Programming: Scaling image with percentage inputs.
+5:00-5:15; Practicing Infomercial speech w/ friends. Getting Sound effects for infomercial.
+5:15-5:45; Doing Math problems.
+5:45-6:15; Dinner.
+6:15-6:30; Practicing Infomercial speech w/ friends.
+6:30-7:00; Writing.
+7:00-7:25; Break.
+7:25-7:30; Finishing programming project.
+7:30-7:45; Writing logs.
+
+Goals for 2/16/2016:
+9:00-4:00; School.
+4:00-4:15; Snack.
+4:15-4:45; Homework.
+4:45-7:10; Soccer.
+7:10-7:20; Shower.
+7:20-7:35; Dinner.
+7:35-7:45; Writing Logs.
+7:45-8:30; Night Routine.
+8:30-9:40; Finish homework.

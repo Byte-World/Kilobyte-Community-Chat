@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using Microsoft.VisualBasic;
 
 namespace fileOpener
 {
@@ -22,6 +23,29 @@ namespace fileOpener
             pictureBox1.MouseDown += pictureBox1_MouseDown;
             pictureBox1.Click += pictureBox1_Click;
             this.KeyDown += Form1_KeyDown;
+            pictureBox1.MouseWheel += pictureBox1_MouseWheel;
+            this.MouseWheel += Form1_MouseWheel;
+        }
+
+        void Form1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (allTools.zoom.selected == true)
+            {
+                
+            }
+        }
+
+        void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (allTools.zoom.selected == true)
+            {
+                
+            }
+        }
+
+        public void zoomIn()
+        {
+
         }
 
         public class cord
@@ -42,12 +66,14 @@ namespace fileOpener
             public penTool pen = new penTool(setColor);
             public moveTool move = new moveTool();
             public regCursor cursor = new regCursor();
+            public zoomTool zoom = new zoomTool();
 
             public void changeCurrentSet(string nonSelect)
             {
                 pen.selected = false;
                 move.selected = false;
                 cursor.selected = false;
+                zoom.selected = false;
 
                 if (nonSelect == "pen")
                 {
@@ -64,6 +90,13 @@ namespace fileOpener
                         if (nonSelect == "cursor")
                         {
                             cursor.selected = true;
+                        }
+                        else
+                        {
+                            if (nonSelect == "zoom")
+                            {
+                                zoom.selected = true;
+                            }
                         }
                     }
                 }
@@ -88,6 +121,11 @@ namespace fileOpener
         public class moveTool : toolType
         {
             //int mode = 1;
+        }
+
+        public class zoomTool : toolType
+        {
+
         }
 
         public class regCursor : toolType
@@ -126,7 +164,7 @@ namespace fileOpener
                         currentStrokeANum++;
                     }
 
-                    firstGPath.AddEllipse(cursor.X, cursor.Y, brushSize, brushSize);
+                    //firstGPath.AddEllipse(cursor.X, cursor.Y, brushSize, brushSize);
                 }
 
                 if (strokeNum == 2)
@@ -204,7 +242,6 @@ namespace fileOpener
         public int currentStrokeANum = 0;
         public cord[] currentStrokeCordsB;
         public int currentStrokeBNum = 0;
-        GraphicsPath firstGPath = new GraphicsPath();
 
         
 
@@ -592,7 +629,7 @@ namespace fileOpener
             polyGonArray[4].X = 824;
             polyGonArray[4].Y = 104;
 
-            firstGPath.StartFigure();
+            //firstGPath.StartFigure();
             cPath.StartFigure();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             radioButton1.Checked = true;
@@ -688,6 +725,70 @@ namespace fileOpener
         private void randomPolyGonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             generatePolygon();
+        }
+
+        public Boolean imageSet = false;
+        public Bitmap pictureBoxPic;
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog upload = new OpenFileDialog();
+
+            upload.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+
+            if (upload.ShowDialog() == DialogResult.OK)
+            {
+                pictureBoxPic = new Bitmap(upload.FileName);
+                pictureBox1.Image = new Bitmap(upload.FileName);
+                label1.Text = upload.FileName;
+                imageSet = true;
+            }
+        }
+
+        public Bitmap cropImagePiece(Rectangle r, Bitmap imageToCrop)
+        {
+            Bitmap cropImg = new Bitmap(r.Width, r.Height);
+            Graphics g = Graphics.FromImage(cropImg);
+            Graphics gd = pictureBox1.CreateGraphics();
+            gd.FillRectangle(whiteSol, 0, 0, 2000, 2000);
+            g.DrawImage(imageToCrop, -r.X, -r.Y);
+            return cropImg;
+        }
+
+        private void cropToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Rectangle cropRect = new Rectangle(161, 73, 80, 80);
+            Bitmap croppedPiece = cropImagePiece(cropRect, pictureBoxPic);
+            pictureBoxPic = croppedPiece;
+            pictureBox1.Image = croppedPiece;
+        }
+
+        public void scaleImage(Bitmap originalImage)
+        {
+            Graphics g = pictureBox1.CreateGraphics();
+            g.FillRectangle(whiteSol, 0, 0, 2000, 2000);
+            float widthPercent = float.Parse(Interaction.InputBox("Width Percent", "Width resize percent:", "1", 200, 200));
+            float heightPercent = float.Parse(Interaction.InputBox("Height Percent", "Height resize percent:", "1", 200, 200));
+            float widthMultiplied = widthPercent * originalImage.Width;
+            float heightMultiplied = heightPercent * originalImage.Height;
+            int roundedWidth = (int)Math.Round(widthMultiplied, 0);
+            int roundedHeight = (int)Math.Round(heightMultiplied, 0);
+            Bitmap scaledPic = new Bitmap(roundedWidth, roundedHeight);
+            using (Graphics graphics = pictureBox1.CreateGraphics())
+            {
+                graphics.DrawImage(originalImage, new Rectangle(0, 0, scaledPic.Width, scaledPic.Height));
+            }
+            
+        }
+
+        private void scaleImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scaleImage(pictureBoxPic);
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            allTools.changeCurrentSet("zoom");
+            label3.Text = "Zoom";
         }
     }
 }

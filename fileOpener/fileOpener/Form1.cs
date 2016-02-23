@@ -31,7 +31,18 @@ namespace fileOpener
         {
             if (allTools.zoom.selected == true)
             {
-                
+                if (e.Delta != 0)
+                {
+                    if (e.Delta <= 0)
+                    {
+                        zoomOut();
+                    }
+                    else
+                    {
+                        cord mouseCord = new cord(e.X, e.Y);
+                        zoomIn(mouseCord);
+                    }
+                }
             }
         }
 
@@ -39,14 +50,66 @@ namespace fileOpener
         {
             if (allTools.zoom.selected == true)
             {
-                
+                if (e.Delta != 0)
+                {
+                    if (e.Delta <= 0)
+                    {
+                        zoomOut();
+                    }
+                    else
+                    {
+                        cord mouseCord = new cord(e.X, e.Y);
+                        zoomIn(mouseCord);
+                    }
+                }
             }
         }
 
-        public void zoomIn()
+        public void zoomOut()
         {
-
+            if (zoomStateOut == false)
+            {
+                Rectangle setRect = new Rectangle(0, 0, pictureBoxPic.Width, pictureBoxPic.Height);
+                Graphics g = pictureBox1.CreateGraphics();
+                g.FillRectangle(whiteSol, 0, 0, 2000, 2000);
+                g.DrawImage(pictureBoxPic, setRect);
+                zoomStateOut = true;
+            }
         }
+
+        public void zoomIn(cord mouseCord)
+        {
+            if (zoomStateOut == true)
+            {
+                cord topLeftCord = new cord(0, 0);
+                if (mouseCord.X < 120)
+                {
+                    topLeftCord.X = 0;
+                }
+                else
+                {
+                    if (mouseCord.Y < 120)
+                    {
+                        topLeftCord.Y = 0;
+                    }
+                    else
+                    {
+                        topLeftCord.X = mouseCord.X - 120;
+                        topLeftCord.Y = mouseCord.Y - 120;
+                    }
+                }
+
+                Rectangle cropSection = new Rectangle(topLeftCord.X, topLeftCord.Y, 240, 240);
+                Bitmap croppedPiece = cropImagePiece(cropSection, pictureBoxPic);
+                Graphics g = pictureBox1.CreateGraphics();
+                g.FillRectangle(whiteSol, 0, 0, 2000, 2000);
+                Rectangle drawRect = new Rectangle(0, 0, 500, 500);
+                g.DrawImage(croppedPiece, drawRect);
+                zoomStateOut = false;
+            }
+        }
+
+        public Boolean zoomStateOut = true;
 
         public class cord
         {
@@ -749,7 +812,6 @@ namespace fileOpener
             Bitmap cropImg = new Bitmap(r.Width, r.Height);
             Graphics g = Graphics.FromImage(cropImg);
             Graphics gd = pictureBox1.CreateGraphics();
-            gd.FillRectangle(whiteSol, 0, 0, 2000, 2000);
             g.DrawImage(imageToCrop, -r.X, -r.Y);
             return cropImg;
         }

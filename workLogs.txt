@@ -1299,4 +1299,24 @@ Water:
 -6:00
 
 Today:
-9:00-4:00; School.
+9:00-3:30; School.
+3:30-4:10; Get home.
+4:10-4:20; Snack.
+4:20-4:45; Homework: Math.
+4:45-5:00; Get ready for soccer.
+5:00-7:10; Soccer.
+7:10-7:40; Dinner Break.
+7:40-8:10; Homework: Math.
+8:10-8:20; Make-up HW.
+8:20-8:30; Writing Logs.
+
+Goals for 2/26/2016:
+9:00-3:30; School.
+3:30-4:10; Get home.
+4:10-4:20; Snack.
+4:20-6:00; Homework.
+6:00-6:30; Dinner.
+6:30-7:00; Writing.
+7:00-7:30; IXL.
+7:30-8:30; Night Routine.
+8:30-9:20; Either Work, or freetime.

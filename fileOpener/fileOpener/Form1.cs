@@ -208,6 +208,7 @@ namespace fileOpener
             if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
             {
                 selectedIn = comboBox1.SelectedIndex;
+                int selectedColor = comboBox2.SelectedIndex;
                 brushSize = sizes[selectedIn];
                 if (aDown == true)
                 {
@@ -259,9 +260,49 @@ namespace fileOpener
                     {
                         brushSize = brushSize * 2;
                     }
-                    System.Drawing.Pen customSizeBl = new System.Drawing.Pen(Color.Black, brushSize);
+                    int selectedColorIn = comboBox2.SelectedIndex;
+                    string color = availibleColors[selectedColorIn];
+                    int[] rgb = new int[3];
+                    int alpha = int.Parse(textBox1.Text);
+                    if (color == "Black")
+                    {
+                        rgb[0] = 0;
+                        rgb[1] = 0;
+                        rgb[2] = 0;
+                    }
+                    else
+                    {
+                        if (color == "White")
+                        {
+                            rgb[0] = 255;
+                            rgb[1] = 255;
+                            rgb[2] = 255;
+                        }
+                        else
+                        {
+                            if (color == "Blue")
+                            {
+                                rgb[0] = 0;
+                                rgb[1] = 0;
+                                rgb[2] = 255;
+                            }
+                            else
+                            {
+                                if (color == "Red")
+                                {
+                                    rgb[0] = 255;
+                                    rgb[1] = 0;
+                                    rgb[2] = 0;
+                                }
+                            }
+                        }
+                    }
+                    System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
+                    //System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(alpha, 255, 255, 255), brushSize);
+                    
                     graphics = pictureBox1.CreateGraphics();
-                    graphics.DrawLine(customSizeBl, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                    //graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                    graphics.DrawLine(customSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                 }
                 else
                 {
@@ -305,6 +346,7 @@ namespace fileOpener
         public int currentStrokeANum = 0;
         public cord[] currentStrokeCordsB;
         public int currentStrokeBNum = 0;
+        string[] availibleColors = new string[4];
 
         
 
@@ -658,7 +700,48 @@ namespace fileOpener
             int radius = sizePX / 2;
             graphics = pictureBox1.CreateGraphics();
             //graphics.FillEllipse(blackSol, curPos.X, curPos.Y, sizePX, sizePX);
-            graphics.FillEllipse(blackSol, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
+            int selectedColorIn = comboBox2.SelectedIndex;
+            string color = availibleColors[selectedColorIn];
+            int[] rgb = new int[3];
+
+            int alpha = int.Parse(textBox1.Text);
+            if (color == "Black")
+            {
+                rgb[0] = 0;
+                rgb[1] = 0;
+                rgb[2] = 0;
+            }
+            else
+            {
+                if (color == "White")
+                {
+                    rgb[0] = 255;
+                    rgb[1] = 255;
+                    rgb[2] = 255;
+                }
+                else
+                {
+                    if (color == "Blue")
+                    {
+                        rgb[0] = 0;
+                        rgb[1] = 0;
+                        rgb[2] = 255;
+                    }
+                    else
+                    {
+                        if (color == "Red")
+                        {
+                            rgb[0] = 255;
+                            rgb[1] = 0;
+                            rgb[2] = 0;
+                        }
+                    }
+                }
+            }
+            System.Drawing.SolidBrush customBrush = new System.Drawing.SolidBrush(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]));
+            //System.Drawing.SolidBrush customWBrush = new System.Drawing.SolidBrush(Color.FromArgb(alpha, 255, 255, 255));
+            //graphics.FillEllipse(customWBrush, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
+            graphics.FillEllipse(customBrush, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -695,6 +778,13 @@ namespace fileOpener
             //firstGPath.StartFigure();
             cPath.StartFigure();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            availibleColors[0] = "Black";
+            availibleColors[1] = "White";
+            availibleColors[2] = "Blue";
+            availibleColors[3] = "Red";
+
             radioButton1.Checked = true;
             for (int i = 0; i < sizes.Length; i++)
             {
@@ -712,6 +802,11 @@ namespace fileOpener
             }
 
             comboBox1.SelectedIndex = 0;
+            comboBox2.Items.Add("Black");
+            comboBox2.Items.Add("White");
+            comboBox2.Items.Add("Blue");
+            comboBox2.Items.Add("Red");
+            comboBox2.SelectedIndex = 0;
         }
 
         void pictureBox1_MouseUp(object sender, MouseEventArgs e)

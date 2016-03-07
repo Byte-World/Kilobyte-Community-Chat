@@ -199,6 +199,8 @@ namespace fileOpener
         void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             cord cursor = new cord(e.X, e.Y);
+            cursorCordPts.X = e.X;
+            cursorCordPts.Y = e.Y;
 
             string text = "x = " + cursor.X + ", y = " + cursor.Y;
             label1.Text = text;
@@ -298,10 +300,10 @@ namespace fileOpener
                         }
                     }
                     System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
-                    //System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(alpha, 255, 255, 255), brushSize);
+                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(1, 255, 255, 255), brushSize);
                     
                     graphics = pictureBox1.CreateGraphics();
-                    //graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                    graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                     graphics.DrawLine(customSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                 }
                 else
@@ -347,6 +349,7 @@ namespace fileOpener
         public cord[] currentStrokeCordsB;
         public int currentStrokeBNum = 0;
         string[] availibleColors = new string[4];
+        public cord cursorCordPts = new cord(0, 0);
 
         
 
@@ -618,6 +621,128 @@ namespace fileOpener
             }
         }
 
+        Region blackDefRegion = new Region();
+
+
+        public void fillRegion()
+        {
+            Graphics g = pictureBox1.CreateGraphics();
+            g.FillRegion(blackSol, blackDefRegion);
+        }
+
+        public void updateRegion()
+        {
+            int selectedIn = comboBox1.SelectedIndex;
+            int brushSize;
+            cord cursor = new cord(cursorCordPts.X, cursorCordPts.Y);
+            if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
+            {
+                selectedIn = comboBox1.SelectedIndex;
+                int selectedColor = comboBox2.SelectedIndex;
+                brushSize = sizes[selectedIn];
+                if (aDown == true)
+                {
+                    brushSize = brushSize * 2;
+                }
+                drawCurrentMarkerSpotCir(cursor, brushSize);
+
+                if (strokeNum == 1)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeANum] = drawnCordsToAdd[i];
+                        currentStrokeANum++;
+                    }
+
+                    //firstGPath.AddEllipse(cursor.X, cursor.Y, brushSize, brushSize);
+                }
+
+                if (strokeNum == 2)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeBNum] = drawnCordsToAdd[i];
+                        currentStrokeBNum++;
+                    }
+                }
+            }
+
+            if (picMsUp == true)
+            {
+                picBoxClick = false;
+                strokeNum++;
+            }
+            else
+            {
+                if (firstMark == false && selectedIn < 11 && fileExists && allTools.pen.selected == true)
+                {
+                    selectedIn = comboBox1.SelectedIndex;
+                    brushSize = sizes[selectedIn];
+                    if (aDown == true)
+                    {
+                        brushSize = brushSize * 2;
+                    }
+                    int selectedColorIn = comboBox2.SelectedIndex;
+                    string color = availibleColors[selectedColorIn];
+                    int[] rgb = new int[3];
+                    int alpha = int.Parse(textBox1.Text);
+                    if (color == "Black")
+                    {
+                        rgb[0] = 0;
+                        rgb[1] = 0;
+                        rgb[2] = 0;
+                    }
+                    else
+                    {
+                        if (color == "White")
+                        {
+                            rgb[0] = 255;
+                            rgb[1] = 255;
+                            rgb[2] = 255;
+                        }
+                        else
+                        {
+                            if (color == "Blue")
+                            {
+                                rgb[0] = 0;
+                                rgb[1] = 0;
+                                rgb[2] = 255;
+                            }
+                            else
+                            {
+                                if (color == "Red")
+                                {
+                                    rgb[0] = 255;
+                                    rgb[1] = 0;
+                                    rgb[2] = 0;
+                                }
+                            }
+                        }
+                    }
+                    System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
+                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(1, 255, 255, 255), brushSize);
+
+                    graphics = pictureBox1.CreateGraphics();
+                    graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                    graphics.DrawLine(customSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                }
+                else
+                {
+                    firstMark = false;
+                }
+            }
+            prevCord.X = cursor.X;
+            prevCord.Y = cursor.Y;
+        }
+
         public bool insideCircle(cord circle, int circleR, cord testCord)
         {
             int distX = 0;
@@ -695,6 +820,11 @@ namespace fileOpener
             }
         }
 
+        public void addCurrentMarkerSpotCirRegion(cord curPos, int sizePX)
+        {
+
+        }
+
         public void drawCurrentMarkerSpotCir(cord curPos, int sizePX)
         {
             int radius = sizePX / 2;
@@ -739,8 +869,8 @@ namespace fileOpener
                 }
             }
             System.Drawing.SolidBrush customBrush = new System.Drawing.SolidBrush(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]));
-            //System.Drawing.SolidBrush customWBrush = new System.Drawing.SolidBrush(Color.FromArgb(alpha, 255, 255, 255));
-            //graphics.FillEllipse(customWBrush, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
+            System.Drawing.SolidBrush customWBrush = new System.Drawing.SolidBrush(Color.FromArgb(1, 255, 255, 255));
+            graphics.FillEllipse(customWBrush, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
             graphics.FillEllipse(customBrush, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
         }
 

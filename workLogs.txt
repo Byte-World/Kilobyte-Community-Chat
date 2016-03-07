@@ -1480,3 +1480,42 @@ Goals for 3/5/2016:
 6:45-7:45; Freetime.
 7:45-8:30; Night Routine.
 8:30-9:40; Freetime.
+
+[3/6/2016]
+Water:
+-9:00
+-10:00
+-12:00
+-3:30
+-6:30
+
+Today:
+9:00-9:30; Morning Routine.
+9:30-10:30; Rest.
+10:30-11:00; Teaching Skyler Scratch.
+11:00-11:30; Reading: Operation Redwood.
+11:30-12:00; Programming: Setting up region draw code.
+12:00-1:00; Lunch.
+1:00-1:30; TV.
+1:30-1:35; Saying bye to Grandma.
+1:35-2:40; Sleep.
+2:40-3:00; TV.
+3:00-3:30; Rest.
+3:30-3:50; Programming: Adding Region rendering so colors with alpha don't overlap and glitch out.
+3:50-4:10; Break.
+4:10-4:30; Programming: Adding Region rendering so colors with alpha don't overlap and glitch out.
+4:30-5:00; Drawing.
+5:00-6:30; Rest.
+6:30-7:10; Dinner.
+7:10-7:20; Barcelona game Highlights.
+7:20-7:40; Writing Logs.
+
+Goals for 3/7/2016:
+9:00-3:30; School.
+3:30-4:00; Get home.
+4:00-6:00; Homework.
+6:00-6:30; Dinner.
+6:30-6:45; Writing Logs.
+6:45-7:45; Work period (HW, Writing, or IXL).
+7:45-8:30; Night routine.
+8:30-9:40; Freetime.

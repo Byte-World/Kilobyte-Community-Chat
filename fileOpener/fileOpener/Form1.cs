@@ -300,7 +300,7 @@ namespace fileOpener
                         }
                     }
                     System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
-                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(1, 255, 255, 255), brushSize);
+                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(255, 255, 255, 255), brushSize);
                     
                     graphics = pictureBox1.CreateGraphics();
                     graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
@@ -621,8 +621,6 @@ namespace fileOpener
             }
         }
 
-        Region blackDefRegion = new Region();
-
 
         public void fillRegion()
         {
@@ -728,7 +726,7 @@ namespace fileOpener
                         }
                     }
                     System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
-                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(1, 255, 255, 255), brushSize);
+                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(255, 255, 255, 255), brushSize);
 
                     graphics = pictureBox1.CreateGraphics();
                     graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
@@ -820,9 +818,42 @@ namespace fileOpener
             }
         }
 
+        Region blackDefRegion = new Region();
+        Region whiteDefRegion = new Region();
+        Region blueDefRegion = new Region();
+        Region redDefRegion = new Region();
+
         public void addCurrentMarkerSpotCirRegion(cord curPos, int sizePX)
         {
+            int radius = sizePX / 2;
+            int selectedColorIn = comboBox2.SelectedIndex;
+            string color = availibleColors[selectedColorIn];
 
+            if (color == "Black")
+            {
+                blackDefRegion.StartFigure();
+            }
+            else
+            {
+                if (color == "White")
+                {
+                    whiteDefRegion.StartFigure();
+                }
+                else
+                {
+                    if (color == "Blue")
+                    {
+                        blueDefRegion.StartFigure();
+                    }
+                    else
+                    {
+                        if (color == "Red")
+                        {
+                            redDefRegion.StartFigure();
+                        }
+                    }
+                }
+            }
         }
 
         public void drawCurrentMarkerSpotCir(cord curPos, int sizePX)
@@ -869,7 +900,7 @@ namespace fileOpener
                 }
             }
             System.Drawing.SolidBrush customBrush = new System.Drawing.SolidBrush(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]));
-            System.Drawing.SolidBrush customWBrush = new System.Drawing.SolidBrush(Color.FromArgb(1, 255, 255, 255));
+            System.Drawing.SolidBrush customWBrush = new System.Drawing.SolidBrush(Color.FromArgb(255, 255, 255, 255));
             graphics.FillEllipse(customWBrush, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
             graphics.FillEllipse(customBrush, curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
         }

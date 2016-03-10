@@ -1562,11 +1562,11 @@ Today:
 9:00-3:30; School.
 3:30-4:00; Get home.
 4:00-4:15; Snack.
-4:15-4:45; Homework.
+4:15-4:45; Homework: Math.
 4:45-5:00; Get ready for soccer.
 5:00-7:10; Soccer.
 7:10-7:35; Dinner.
-7:35-7:; Writing Logs.
+7:35-7:45; Writing Logs.
 
 Goals for 3/9/2016:
 9:00-2:00; School.
@@ -1577,5 +1577,33 @@ Goals for 3/9/2016:
 6:00-6:30; Dinner.
 6:30-6:40; Writing Logs.
 6:40-7:45; Freetime.
+7:45-8:30; Night routine.
+8:30-9:40; Freetime.
+
+[3/9/2016]
+Water:
+-10:00
+-12:00
+-1:30
+-4:00
+
+Today:
+9:00-2:00; School.
+2:00-2:30; Get home.
+2:30-3:00; Snack.
+3:00-4:20; Homework: Math.
+4:20-4:40; Break.
+4:40-5:00; Programming: Region render code and circle draw code.
+5:00-5:30; Teaching Skyler Scratch.
+5:30-5:55; Dinner.
+5:55-6:05; Writing Logs.
+
+Goals for 3/10/2016:
+9:00-3:30; School.
+3:30-4:00; Get home.
+4:00-6:00; Homework.
+6:00-6:30; Dinner.
+6:30-6:45; Writing Logs.
+6:45-7:45; Work period (HW, Writing, or IXL).
 7:45-8:30; Night routine.
 8:30-9:40; Freetime.

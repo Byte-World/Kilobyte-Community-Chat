@@ -625,7 +625,13 @@ namespace fileOpener
         public void fillRegion()
         {
             Graphics g = pictureBox1.CreateGraphics();
-            g.FillRegion(blackSol, blackDefRegion);
+            Region fillRegion = new Region(blackDefPath);
+            g.FillRegion(blackSol, fillRegion);
+        }
+
+        public void updateLineRegion()
+        {
+
         }
 
         public void updateRegion()
@@ -642,7 +648,7 @@ namespace fileOpener
                 {
                     brushSize = brushSize * 2;
                 }
-                drawCurrentMarkerSpotCir(cursor, brushSize);
+                addCurrentMarkerSpotCirRegion(cursor, brushSize);
 
                 if (strokeNum == 1)
                 {
@@ -694,43 +700,49 @@ namespace fileOpener
                     int alpha = int.Parse(textBox1.Text);
                     if (color == "Black")
                     {
-                        rgb[0] = 0;
-                        rgb[1] = 0;
-                        rgb[2] = 0;
+                        if (renderRegionInitial[0] == false)
+                        {
+                            blackDefPath.StartFigure();
+                            renderRegionInitial[0] = true;
+                        }
+                        blackDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                     }
                     else
                     {
                         if (color == "White")
                         {
-                            rgb[0] = 255;
-                            rgb[1] = 255;
-                            rgb[2] = 255;
+                            if (renderRegionInitial[1] == false)
+                            {
+                                whiteDefPath.StartFigure();
+                                renderRegionInitial[1] = true;
+                            }
+                            whiteDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                         }
                         else
                         {
                             if (color == "Blue")
                             {
-                                rgb[0] = 0;
-                                rgb[1] = 0;
-                                rgb[2] = 255;
+                                if (renderRegionInitial[2] == false)
+                                {
+                                    blueDefPath.StartFigure();
+                                    renderRegionInitial[2] = true;
+                                }
+                                blueDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                             }
                             else
                             {
                                 if (color == "Red")
                                 {
-                                    rgb[0] = 255;
-                                    rgb[1] = 0;
-                                    rgb[2] = 0;
+                                    if (renderRegionInitial[3] == false)
+                                    {
+                                        redDefPath.StartFigure();
+                                        renderRegionInitial[3] = true;
+                                    }
+                                    redDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                                 }
                             }
                         }
                     }
-                    System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
-                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(255, 255, 255, 255), brushSize);
-
-                    graphics = pictureBox1.CreateGraphics();
-                    graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
-                    graphics.DrawLine(customSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
                 }
                 else
                 {
@@ -818,11 +830,11 @@ namespace fileOpener
             }
         }
 
-        Region blackDefRegion = new Region();
-        Region whiteDefRegion = new Region();
-        Region blueDefRegion = new Region();
-        Region redDefRegion = new Region();
-
+        GraphicsPath blackDefPath;
+        GraphicsPath whiteDefPath;
+        GraphicsPath blueDefPath;
+        GraphicsPath redDefPath;
+        bool[] renderRegionInitial = new bool[4];
         public void addCurrentMarkerSpotCirRegion(cord curPos, int sizePX)
         {
             int radius = sizePX / 2;
@@ -831,25 +843,64 @@ namespace fileOpener
 
             if (color == "Black")
             {
-                blackDefRegion.StartFigure();
+                if (renderRegionInitial[0] == false)
+                {
+                    cord centerCord = new cord(curPos.X, curPos.Y);
+                    Rectangle renderCenter = new Rectangle(centerCord.X, centerCord.Y, 1, 1);
+                    blackDefPath = new GraphicsPath();
+                    blackDefPath.StartFigure();
+                    blackDefPath.AddRectangle(renderCenter);
+                    renderRegionInitial[0] = true;
+                }
+                blackDefPath.StartFigure();
+                blackDefPath.AddEllipse(curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
             }
             else
             {
                 if (color == "White")
                 {
-                    whiteDefRegion.StartFigure();
+                    if (renderRegionInitial[1] == false)
+                    {
+                        Rectangle renderCenter = new Rectangle(curPos.X, curPos.Y, 1, 1);
+                        whiteDefPath = new GraphicsPath();
+                        whiteDefPath.StartFigure();
+                        whiteDefPath.AddRectangle(renderCenter);
+                        renderRegionInitial[1] = true;
+                    }
+                    whiteDefPath.StartFigure();
+                    whiteDefPath.AddEllipse(curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
                 }
                 else
                 {
                     if (color == "Blue")
                     {
-                        blueDefRegion.StartFigure();
+                        if (renderRegionInitial[2] == false)
+                        {
+                            cord centerCord = new cord(curPos.X, curPos.Y);
+                            Rectangle renderCenter = new Rectangle(centerCord.X, centerCord.Y, 1, 1);
+                            blueDefPath = new GraphicsPath();
+                            blueDefPath.StartFigure();
+                            blueDefPath.AddRectangle(renderCenter);
+                            renderRegionInitial[2] = true;
+                        }
+                        blueDefPath.StartFigure();
+                        blueDefPath.AddEllipse(curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
                     }
                     else
                     {
                         if (color == "Red")
                         {
-                            redDefRegion.StartFigure();
+                            if (renderRegionInitial[3] == false)
+                            {
+                                cord centerCord = new cord(curPos.X, curPos.Y);
+                                Rectangle renderCenter = new Rectangle(centerCord.X, centerCord.Y, 1, 1);
+                                redDefPath = new GraphicsPath();
+                                redDefPath.StartFigure();
+                                redDefPath.AddRectangle(renderCenter);
+                                renderRegionInitial[3] = true;
+                            }
+                            redDefPath.StartFigure();
+                            redDefPath.AddEllipse(curPos.X - radius, curPos.Y - radius, sizePX, sizePX);
                         }
                     }
                 }
@@ -936,8 +987,14 @@ namespace fileOpener
             polyGonArray[4].X = 824;
             polyGonArray[4].Y = 104;
 
-            //firstGPath.StartFigure();
-            cPath.StartFigure();
+            for (int i = 0; i < renderRegionInitial.Length; i++)
+            {
+                renderRegionInitial[i] = false;
+            }
+
+
+                //firstGPath.StartFigure();
+                cPath.StartFigure();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
 

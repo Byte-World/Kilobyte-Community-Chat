@@ -1643,3 +1643,47 @@ Goals for 3/11/2016:
 6:40-7:45; Freetime.
 7:45-8:30; Night routine.
 8:30-9:40; Freetime.
+
+[3/11/2016]
+Water:
+-8:50
+-12:00
+-2:00
+-5:00
+-6:00
+
+Today:
+8:45-9:15; Morning Routine.
+9:15-9:30; Talk with Mom.
+9:30-10:30; Slavery Project Script. Formatting Powerpoint for Math Jeopardy.
+10:30-11:30; PDN.
+11:30-12:00; Formatting Powerpoint for Math Jeopardy.
+12:00-1:00; Dinner.
+1:00-1:30; Break.
+1:30-2:00; Reading.
+2:00-3:00; Programming: Region rendering, switching code to graphicspath.
+3:00-3:20; Reading.
+3:20-4:00; Break.
+4:00-5:00; Programming: Region rendering, switching code to graphicspath.
+5:00-5:15; Snack.
+5:15-5:30; Programming: Convert graphicspath to region and then draw.
+5:30-6:00; Football with Skyler.
+6:00-6:35; Dinner.
+6:35-6:50; Writing Logs.
+
+Goals for 3/12/2016:
+9:00-9:30; Morning Routine.
+9:30-10:30; Powerpoint presentation for Math Jeopardy.
+10:30-12:00; Programming.
+12:00-1:00; Lunch break.
+1:00-2:00; PDN.
+2:00-2:30; Break.
+2:30-4:00; Programming.
+4:00-4:30; Snack Break.
+4:30-5:30; IXL.
+5:30-6:00; Writing.
+6:00-6:30; Dinner.
+6:30-6:40; Writing Logs.
+6:40-7:45; Freetime.
+7:45-8:30; Night routine.
+8:30-9:40; Freetime.

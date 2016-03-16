@@ -698,51 +698,7 @@ namespace fileOpener
                     string color = availibleColors[selectedColorIn];
                     int[] rgb = new int[3];
                     int alpha = int.Parse(textBox1.Text);
-                    if (color == "Black")
-                    {
-                        if (renderRegionInitial[0] == false)
-                        {
-                            blackDefPath.StartFigure();
-                            renderRegionInitial[0] = true;
-                        }
-                        blackDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
-                    }
-                    else
-                    {
-                        if (color == "White")
-                        {
-                            if (renderRegionInitial[1] == false)
-                            {
-                                whiteDefPath.StartFigure();
-                                renderRegionInitial[1] = true;
-                            }
-                            whiteDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
-                        }
-                        else
-                        {
-                            if (color == "Blue")
-                            {
-                                if (renderRegionInitial[2] == false)
-                                {
-                                    blueDefPath.StartFigure();
-                                    renderRegionInitial[2] = true;
-                                }
-                                blueDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
-                            }
-                            else
-                            {
-                                if (color == "Red")
-                                {
-                                    if (renderRegionInitial[3] == false)
-                                    {
-                                        redDefPath.StartFigure();
-                                        renderRegionInitial[3] = true;
-                                    }
-                                    redDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
-                                }
-                            }
-                        }
-                    }
+                    regionUpdateColors(color, cursor);
                 }
                 else
                 {
@@ -751,6 +707,55 @@ namespace fileOpener
             }
             prevCord.X = cursor.X;
             prevCord.Y = cursor.Y;
+        }
+
+        public void regionUpdateColors(string color, cord cursor)
+        {
+            if (color == "Black")
+            {
+                if (renderRegionInitial[0] == false)
+                {
+                    blackDefPath.StartFigure();
+                    renderRegionInitial[0] = true;
+                }
+                blackDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+            }
+            else
+            {
+                if (color == "White")
+                {
+                    if (renderRegionInitial[1] == false)
+                    {
+                        whiteDefPath.StartFigure();
+                        renderRegionInitial[1] = true;
+                    }
+                    whiteDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                }
+                else
+                {
+                    if (color == "Blue")
+                    {
+                        if (renderRegionInitial[2] == false)
+                        {
+                            blueDefPath.StartFigure();
+                            renderRegionInitial[2] = true;
+                        }
+                        blueDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                    }
+                    else
+                    {
+                        if (color == "Red")
+                        {
+                            if (renderRegionInitial[3] == false)
+                            {
+                                redDefPath.StartFigure();
+                                renderRegionInitial[3] = true;
+                            }
+                            redDefPath.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                        }
+                    }
+                }
+            }
         }
 
         public bool insideCircle(cord circle, int circleR, cord testCord)
@@ -841,6 +846,30 @@ namespace fileOpener
             int selectedColorIn = comboBox2.SelectedIndex;
             string color = availibleColors[selectedColorIn];
 
+            markerSpotColor(color, curPos, radius, sizePX);
+        }
+
+        public void prototypeMarkerSpotColor(string color, cord cursorPoint, int diameterSZ)
+        {
+            int radius = diameterSZ / 2;
+            string[] colorList = new string[4];
+            colorList[0] = "Black";
+            colorList[1] = "White";
+            colorList[2] = "Blue";
+            colorList[3] = "Red";
+            int colorNo;
+
+            for (int i = 0; i < colorList.Length; i++)
+            {
+                if (colorList[i] == color)
+                {
+                    colorNo = i + 1;
+                }
+            }
+        }
+
+        public void markerSpotColor(string color, cord curPos, int radius, int sizePX)
+        {
             if (color == "Black")
             {
                 if (renderRegionInitial[0] == false)

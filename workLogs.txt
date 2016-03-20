@@ -1814,3 +1814,30 @@ Goals for 3/16/2016:
 7:30-7:45; Freetime.
 7:45-8:30; Night routine.
 8:30-9:40; Freetime.
+
+[3/19/2016]
+Water:
+-7:30
+-9:00
+-10:00
+-12:00
+-1:30
+-2:30
+-4:00
+-5:30
+
+Today:
+7:30-8:00; Breakfast.
+8:00-12:00; Rest.
+12:00-12:30; Lunch.
+12:30-2:00; Play Go with Skyler.
+2:00-5:00; Rest.
+5:00-5:30; PDN: Gradient text. 3d text.
+5:30-6:00; Rest.
+6:00-6:50; Dinner.
+6:50-7:05; Writing Logs.
+
+Stuff to do on 3/20/2016:
+-PDN, 1 hour.
+-Programming, 1 hour 30 min.
+-IXL, 30 min.

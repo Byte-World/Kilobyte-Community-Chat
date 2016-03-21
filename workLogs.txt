@@ -1841,3 +1841,21 @@ Stuff to do on 3/20/2016:
 -PDN, 1 hour.
 -Programming, 1 hour 30 min.
 -IXL, 30 min.
+
+[3/20/2016]
+Water:
+-10:10
+-11:00
+-12:30
+-3:45
+-5:00
+-6:00
+
+Today:
+10:00-10:30; Breakfast.
+10:30-12:00; Rest.
+12:00-12:30; Lunch.
+12:30-3:30; Sleep.
+3:30-5:50; Rest.
+5:50-6:15; Dinner.
+6:15-6:25; Writing Logs

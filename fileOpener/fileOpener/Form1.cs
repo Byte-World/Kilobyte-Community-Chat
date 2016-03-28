@@ -351,7 +351,6 @@ namespace fileOpener
         string[] availibleColors = new string[4];
         public cord cursorCordPts = new cord(0, 0);
 
-        
 
         private void moveCordsLeft(cord[] currentCords, int pixToMove)
         {
@@ -1187,6 +1186,126 @@ namespace fileOpener
         private void scaleImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scaleImage(pictureBoxPic);
+        }
+
+        public void updateEllipsesDrawing(cord mouseClickedSpot, int penSize)
+        {
+            int selectedIn = comboBox1.SelectedIndex;
+            int brushSize = sizes[selectedIn];
+            if (aDown == true)
+            {
+                brushSize = brushSize * 2;
+            }
+            int elipRadius = penSize / 2;
+            cord elipCorner = new cord(0, 0);
+            elipCorner.X = mouseClickedSpot.X - elipRadius;
+            elipCorner.Y = mouseClickedSpot.Y - elipRadius;
+            currentMarkPath.StartFigure();
+            currentMarkPath.AddEllipse(elipCorner.X, elipCorner.Y, penSize, penSize);
+        }
+
+        public void renderMarkPath()
+        {
+            int[] argbInts = new int[4];
+            // Order: Black, White, Blue, Red, Green
+            int selectedColorInt = comboBox2.SelectedIndex;
+
+            if (selectedColorInt == 0)
+            {
+                //Black
+                argbInts[1] = 0;
+                argbInts[2] = 0;
+                argbInts[3] = 0;
+            }
+            else
+            {
+                if (selectedColorInt == 1)
+                {
+                    //White
+                    argbInts[1] = 255;
+                    argbInts[2] = 255;
+                    argbInts[3] = 255;
+                }
+                else
+                {
+                    if (selectedColorInt == 2)
+                    {
+                        //Blue
+                        argbInts[1] = 0;
+                        argbInts[2] = 0;
+                        argbInts[3] = 255;
+                    }
+                    else
+                    {
+                        if (selectedColorInt == 3)
+                        {
+                            //Red
+                            argbInts[1] = 255;
+                            argbInts[2] = 0;
+                            argbInts[3] = 0;
+                        }
+                        else
+                        {
+                            if (selectedColorInt == 4)
+                            {
+                                //Green
+                                argbInts[1] = 0;
+                                argbInts[2] = 255;
+                                argbInts[3] = 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            int alpha = int.Parse(textBox1.Text);
+            argbInts[0] = alpha;
+
+            Graphics g = pictureBox1.CreateGraphics();
+            SolidBrush customBrush = new SolidBrush(Color.FromArgb(argbInts[0], argbInts[1], argbInts[2], argbInts[3]));
+            g.FillPath(customBrush, currentMarkPath);
+            currentMarkPath = new GraphicsPath();
+        }
+
+        public GraphicsPath currentMarkPath = new GraphicsPath();
+        public GraphicsPath testPath = new GraphicsPath();
+
+        public void setTestPathClear(int method, cord[] coordinates)
+        {
+            cord[] usingCords;
+            if (method == 0) {
+                usingCords = new cord[coordinates.Length];
+                testPath.StartFigure();
+                for (int i = 0; i < coordinates.Length; i++)
+                {
+                    usingCords[i].X = coordinates[i].X;
+                    usingCords[i].Y = coordinates[i].Y;
+                }
+                Point[] cordsForPolygon = new Point[usingCords.Length];
+                for (int i = 0; i < usingCords.Length; i++)
+                {
+                    cordsForPolygon[i].X = usingCords[i].X;
+                    cordsForPolygon[i].Y = usingCords[i].Y;
+                }
+                testPath.AddPolygon(cordsForPolygon);
+            }
+            else
+            {
+                if (method == 1)
+                {
+                    usingCords = new cord[1];
+                    usingCords[0].X = 0;
+                    usingCords[0].Y = 0;
+                    testPath = new GraphicsPath();
+                }
+            }
+        }
+
+        public void renderTestPath()
+        {
+            Graphics g = pictureBox1.CreateGraphics();
+            Region regionConvert = new Region(testPath);
+            g.FillRegion(regionConvert);
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)

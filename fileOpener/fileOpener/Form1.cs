@@ -348,7 +348,7 @@ namespace fileOpener
         public int currentStrokeANum = 0;
         public cord[] currentStrokeCordsB;
         public int currentStrokeBNum = 0;
-        string[] availibleColors = new string[4];
+        string[] availibleColors = new string[5];
         public cord cursorCordPts = new cord(0, 0);
 
 
@@ -1030,6 +1030,7 @@ namespace fileOpener
             availibleColors[1] = "White";
             availibleColors[2] = "Blue";
             availibleColors[3] = "Red";
+            availibleColors[4] = "Green";
 
             radioButton1.Checked = true;
             for (int i = 0; i < sizes.Length; i++)
@@ -1052,6 +1053,7 @@ namespace fileOpener
             comboBox2.Items.Add("White");
             comboBox2.Items.Add("Blue");
             comboBox2.Items.Add("Red");
+            comboBox2.Items.Add("Green");
             comboBox2.SelectedIndex = 0;
         }
 
@@ -1188,7 +1190,7 @@ namespace fileOpener
             scaleImage(pictureBoxPic);
         }
 
-        public void updateEllipsesDrawing(cord mouseClickedSpot, int penSize)
+        public void updateEllipsesDrawing(cord mouseClickedSpot)
         {
             int selectedIn = comboBox1.SelectedIndex;
             int brushSize = sizes[selectedIn];
@@ -1196,12 +1198,27 @@ namespace fileOpener
             {
                 brushSize = brushSize * 2;
             }
-            int elipRadius = penSize / 2;
+            int elipRadius = brushSize / 2;
             cord elipCorner = new cord(0, 0);
             elipCorner.X = mouseClickedSpot.X - elipRadius;
             elipCorner.Y = mouseClickedSpot.Y - elipRadius;
             currentMarkPath.StartFigure();
-            currentMarkPath.AddEllipse(elipCorner.X, elipCorner.Y, penSize, penSize);
+            currentMarkPath.AddEllipse(elipCorner.X, elipCorner.Y, brushSize, brushSize);
+        }
+
+        public Boolean previouslyClicked = false;
+
+        public void regionRenderLoop()
+        {
+            if (picBoxClick == false)
+            {
+                renderMarkPath();
+            }
+
+            if (picBoxClick && fileExists && allTools.pen.selected == true)
+            {
+                updateEllipsesDrawing(cursorCordPts);
+            }
         }
 
         public void renderMarkPath()
@@ -1270,6 +1287,23 @@ namespace fileOpener
         public GraphicsPath currentMarkPath = new GraphicsPath();
         public GraphicsPath testPath = new GraphicsPath();
 
+        public void renderSquareBrush(cord mouseClickedSpot, int penSize)
+        {
+            int selectedIn = comboBox1.SelectedIndex;
+            int brushSize = sizes[selectedIn];
+            if (aDown == true)
+            {
+                brushSize = brushSize * 2;
+            }
+            int rectRadius = penSize / 2;
+            cord rectCorner = new cord(0, 0);
+            rectCorner.X = mouseClickedSpot.X - rectRadius;
+            rectCorner.Y = mouseClickedSpot.Y - rectRadius;
+            currentMarkPath.StartFigure();
+            Rectangle renderArea = new Rectangle(rectCorner.X, rectCorner.Y, penSize, penSize);
+            currentMarkPath.AddRectangle(renderArea);
+        }
+
         public void setTestPathClear(int method, cord[] coordinates)
         {
             cord[] usingCords;
@@ -1305,7 +1339,8 @@ namespace fileOpener
         {
             Graphics g = pictureBox1.CreateGraphics();
             Region regionConvert = new Region(testPath);
-            g.FillRegion(regionConvert);
+            SolidBrush testBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));
+            g.FillRegion(testBrush, regionConvert);
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)

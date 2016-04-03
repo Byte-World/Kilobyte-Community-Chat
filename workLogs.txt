@@ -2121,3 +2121,34 @@ Things to do for 4/2/2016:
 -1 hour engineering.
 -30 min IXL.
 -30 min writing.
+
+[4/2/2016]
+Water:
+-9:00
+-11:30
+-12:30
+-3:00
+-6:00
+
+Today:
+8:50-9:10; Morning Routine.
+9:10-9:40; Mulanting.
+9:40-9:50; Get ready for soccer.
+9:50-12:30; Soccer game.
+12:30-1:00; Lunch.
+1:00-2:00; Reading.
+2:00-2:30; Rest.
+2:30-3:00; Reading.
+3:00-3:40; Programming: Adding new render specs. New render code.
+3:40-3:50; Get ready for soccer.
+3:50-6:10; Soccer.
+6:10-6:40; Dinner.
+6:40-7:00; Shower.
+7:00-7:10; Writing Logs.
+
+Things to do for 4/2/2016:
+-2 hours programming.
+-1 hour PDN.
+-1 hour engineering.
+-30 min IXL.
+-30 min writing.

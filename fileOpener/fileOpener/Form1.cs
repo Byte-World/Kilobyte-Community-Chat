@@ -315,6 +315,187 @@ namespace fileOpener
             prevCord.Y = cursor.Y;
         }
 
+        GraphicsPath pathToRender = new GraphicsPath();
+
+        public void changeRender()
+        {
+            cord cursor = new cord(cursorCordPts.X, cursorCordPts.Y);
+
+            string text = "x = " + cursor.X + ", y = " + cursor.Y;
+            label1.Text = text;
+            int selectedIn = comboBox1.SelectedIndex;
+            int brushSize;
+
+            if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
+            {
+                selectedIn = comboBox1.SelectedIndex;
+                int selectedColor = comboBox2.SelectedIndex;
+                brushSize = sizes[selectedIn];
+                if (aDown == true)
+                {
+                    brushSize = brushSize * 2;
+                }
+                drawCurrentMarkerSpotCir(cursor, brushSize);
+
+                if (strokeNum == 1)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeANum] = drawnCordsToAdd[i];
+                        currentStrokeANum++;
+                    }
+
+                    //firstGPath.AddEllipse(cursor.X, cursor.Y, brushSize, brushSize);
+                }
+
+                if (strokeNum == 2)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeBNum] = drawnCordsToAdd[i];
+                        currentStrokeBNum++;
+                    }
+                }
+            }
+
+            if (picMsUp == true)
+            {
+                picBoxClick = false;
+                strokeNum++;
+            }
+            else
+            {
+                if (firstMark == false && selectedIn < 11 && fileExists && allTools.pen.selected == true)
+                {
+                    selectedIn = comboBox1.SelectedIndex;
+                    brushSize = sizes[selectedIn];
+                    if (aDown == true)
+                    {
+                        brushSize = brushSize * 2;
+                    }
+                    int selectedColorIn = comboBox2.SelectedIndex;
+                    string color = availibleColors[selectedColorIn];
+                    int[] rgb = new int[3];
+                    int alpha = int.Parse(textBox1.Text);
+                    if (color == "Black")
+                    {
+                        rgb[0] = 0;
+                        rgb[1] = 0;
+                        rgb[2] = 0;
+                    }
+                    else
+                    {
+                        if (color == "White")
+                        {
+                            rgb[0] = 255;
+                            rgb[1] = 255;
+                            rgb[2] = 255;
+                        }
+                        else
+                        {
+                            if (color == "Blue")
+                            {
+                                rgb[0] = 0;
+                                rgb[1] = 0;
+                                rgb[2] = 255;
+                            }
+                            else
+                            {
+                                if (color == "Red")
+                                {
+                                    rgb[0] = 255;
+                                    rgb[1] = 0;
+                                    rgb[2] = 0;
+                                }
+                            }
+                        }
+                    }
+                    System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
+                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(255, 255, 255, 255), brushSize);
+
+                    graphics = pictureBox1.CreateGraphics();
+                    graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                    graphics.DrawLine(customSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                }
+                else
+                {
+                    firstMark = false;
+                }
+            }
+            prevCord.X = cursor.X;
+            prevCord.Y = cursor.Y;
+        }
+
+        public void lineRenderConnect(int selectedIn, int brushSize, cord cursor)
+        {
+            if (firstMark == false && selectedIn < 11 && fileExists && allTools.pen.selected == true)
+            {
+                selectedIn = comboBox1.SelectedIndex;
+                brushSize = sizes[selectedIn];
+                if (aDown == true)
+                {
+                    brushSize = brushSize * 2;
+                }
+                int selectedColorIn = comboBox2.SelectedIndex;
+                string color = availibleColors[selectedColorIn];
+                int[] rgb = new int[3];
+                int alpha = int.Parse(textBox1.Text);
+                if (color == "Black")
+                {
+                    rgb[0] = 0;
+                    rgb[1] = 0;
+                    rgb[2] = 0;
+                }
+                else
+                {
+                    if (color == "White")
+                    {
+                        rgb[0] = 255;
+                        rgb[1] = 255;
+                        rgb[2] = 255;
+                    }
+                    else
+                    {
+                        if (color == "Blue")
+                        {
+                            rgb[0] = 0;
+                            rgb[1] = 0;
+                            rgb[2] = 255;
+                        }
+                        else
+                        {
+                            if (color == "Red")
+                            {
+                                rgb[0] = 255;
+                                rgb[1] = 0;
+                                rgb[2] = 0;
+                            }
+                        }
+                    }
+                }
+                System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
+                System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(255, 255, 255, 255), brushSize);
+
+                graphics = pictureBox1.CreateGraphics();
+                //graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                //graphics.DrawLine(customSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                pathToRender.StartFigure();
+                pathToRender.AddLine(prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+            }
+            else
+            {
+                firstMark = false;
+            }
+        }
+
         void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             cord cursor = new cord(e.X, e.Y);
@@ -1055,6 +1236,11 @@ namespace fileOpener
             comboBox2.Items.Add("Red");
             comboBox2.Items.Add("Green");
             comboBox2.SelectedIndex = 0;
+
+            for (int i = 0; i < 10; i--)
+            {
+                regionRenderLoop();
+            }
         }
 
         void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -1341,6 +1527,14 @@ namespace fileOpener
             Region regionConvert = new Region(testPath);
             SolidBrush testBrush = new SolidBrush(Color.FromArgb(255, 0, 0, 0));
             g.FillRegion(testBrush, regionConvert);
+        }
+
+        public void startRenderLoop()
+        {
+            for (Boolean i = true; i; i = true)
+            {
+                regionRenderLoop();
+            }
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)

@@ -2180,3 +2180,32 @@ Things to do for 4/4/2016:
 -3 hours programming.
 -1 hour PDN.
 -1 hour engineering.
+
+[4/4/2016]
+Water:
+-10:00
+-1:00
+-4:00
+-6:00
+
+Today:
+8:00-8:20; Morning Routine.
+8:20-8:50; Mulanting.
+8:50-9:30; Take Skyler to Coerver.
+9:30-1:00; Programming: Alpha color project. Looking through PDN source code. Chinese test project.
+1:00-2:00; Lunch.
+2:00-2:30; Chinese test project.
+2:30-3:20; Picking up Skyler.
+3:20-4:00; Programming: Adding mode menus in chinese test project.
+4:00-5:00; Game time.
+5:00-5:30; Nerf with Skyler.
+5:30-6:00; Programming: Adding mode menus in chinese test project.
+6:00-6:10; Break.
+6:10-6:30; Dinner.
+6:30-6:40; Writing Logs.
+
+Things to do for 4/5/2016:
+-3 hours programming.
+-1 hour PDN.
+-30 min. IXL.
+-30 min Writing.

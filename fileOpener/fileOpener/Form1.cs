@@ -205,8 +205,9 @@ namespace fileOpener
             string text = "x = " + cursor.X + ", y = " + cursor.Y;
             label1.Text = text;
             int selectedIn = comboBox1.SelectedIndex;
+            //regionRenderLoop();
             int brushSize;
-
+            
             if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
             {
                 selectedIn = comboBox1.SelectedIndex;
@@ -230,6 +231,7 @@ namespace fileOpener
                         currentStrokeANum++;
                     }
 
+                    drawCurrentMarkerSpotCir(cursor, brushSize);
                     //firstGPath.AddEllipse(cursor.X, cursor.Y, brushSize, brushSize);
                 }
 
@@ -311,6 +313,131 @@ namespace fileOpener
                     firstMark = false;
                 }
             }
+            
+            prevCord.X = cursor.X;
+            prevCord.Y = cursor.Y;
+        }
+
+        GraphicsPath prototypeToRender = new GraphicsPath();
+
+        public void prototypePicBoxRendering(object sender, MouseEventArgs e)
+        {
+            cord cursor = new cord(e.X, e.Y);
+            cursorCordPts.X = e.X;
+            cursorCordPts.Y = e.Y;
+
+            string text = "x = " + cursor.X + ", y = " + cursor.Y;
+            label1.Text = text;
+            int selectedIn = comboBox1.SelectedIndex;
+            //regionRenderLoop();
+            int brushSize;
+
+            if (picBoxClick == true && selectedIn < 11 && fileExists && allTools.pen.selected == true)
+            {
+                selectedIn = comboBox1.SelectedIndex;
+                int selectedColor = comboBox2.SelectedIndex;
+                brushSize = sizes[selectedIn];
+                if (aDown == true)
+                {
+                    brushSize = brushSize * 2;
+                }
+                drawCurrentMarkerSpotCir(cursor, brushSize);
+
+                if (strokeNum == 1)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeANum] = drawnCordsToAdd[i];
+                        currentStrokeANum++;
+                    }
+
+                    drawCurrentMarkerSpotCir(cursor, brushSize);
+                    //firstGPath.AddEllipse(cursor.X, cursor.Y, brushSize, brushSize);
+                }
+
+                if (strokeNum == 2)
+                {
+                    int radius = brushSize / 2;
+                    cord centerCord = new cord(cursor.X - radius, cursor.Y - radius);
+                    cord[] drawnCordsToAdd = calculateCircle(centerCord, brushSize);
+
+                    for (int i = 0; i < drawnCordsToAdd.Length; i++)
+                    {
+                        currentStrokeCordsA[currentStrokeBNum] = drawnCordsToAdd[i];
+                        currentStrokeBNum++;
+                    }
+                }
+            }
+
+            if (picMsUp == true)
+            {
+                picBoxClick = false;
+                strokeNum++;
+            }
+            else
+            {
+                if (firstMark == false && selectedIn < 11 && fileExists && allTools.pen.selected == true)
+                {
+                    selectedIn = comboBox1.SelectedIndex;
+                    brushSize = sizes[selectedIn];
+                    if (aDown == true)
+                    {
+                        brushSize = brushSize * 2;
+                    }
+                    int selectedColorIn = comboBox2.SelectedIndex;
+                    string color = availibleColors[selectedColorIn];
+                    int[] rgb = new int[3];
+                    int alpha = int.Parse(textBox1.Text);
+                    if (color == "Black")
+                    {
+                        rgb[0] = 0;
+                        rgb[1] = 0;
+                        rgb[2] = 0;
+                    }
+                    else
+                    {
+                        if (color == "White")
+                        {
+                            rgb[0] = 255;
+                            rgb[1] = 255;
+                            rgb[2] = 255;
+                        }
+                        else
+                        {
+                            if (color == "Blue")
+                            {
+                                rgb[0] = 0;
+                                rgb[1] = 0;
+                                rgb[2] = 255;
+                            }
+                            else
+                            {
+                                if (color == "Red")
+                                {
+                                    rgb[0] = 255;
+                                    rgb[1] = 0;
+                                    rgb[2] = 0;
+                                }
+                            }
+                        }
+                    }
+                    System.Drawing.Pen customSize = new System.Drawing.Pen(Color.FromArgb(alpha, rgb[0], rgb[1], rgb[2]), brushSize);
+                    System.Drawing.Pen customWSize = new System.Drawing.Pen(Color.FromArgb(255, 255, 255, 255), brushSize);
+
+                    graphics = pictureBox1.CreateGraphics();
+                    graphics.DrawLine(customWSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                    graphics.DrawLine(customSize, prevCord.X, prevCord.Y, cursor.X, cursor.Y);
+                }
+                else
+                {
+                    firstMark = false;
+                }
+            }
+
             prevCord.X = cursor.X;
             prevCord.Y = cursor.Y;
         }
@@ -998,6 +1125,7 @@ namespace fileOpener
             graphics = pictureBox1.CreateGraphics();
             graphics.FillRectangle(whiteSol, 0, 0, 2000, 2000);
             fileExists = true;
+            //startRenderLoop();
         }
 
         public bool checkSide(Color currentColor, int currentCordX, int currentCordY)
@@ -1120,7 +1248,7 @@ namespace fileOpener
         {
             int radius = sizePX / 2;
             graphics = pictureBox1.CreateGraphics();
-            //graphics.FillEllipse(blackSol, curPos.X, curPos.Y, sizePX, sizePX);
+            //graphics.FillEllipse(whiteSol, curPos.X, curPos.Y, sizePX, sizePX);
             int selectedColorIn = comboBox2.SelectedIndex;
             string color = availibleColors[selectedColorIn];
             int[] rgb = new int[3];
@@ -1202,8 +1330,8 @@ namespace fileOpener
             }
 
 
-                //firstGPath.StartFigure();
-                cPath.StartFigure();
+            //firstGPath.StartFigure();
+            cPath.StartFigure();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -1236,16 +1364,12 @@ namespace fileOpener
             comboBox2.Items.Add("Red");
             comboBox2.Items.Add("Green");
             comboBox2.SelectedIndex = 0;
-
-            for (int i = 0; i < 10; i--)
-            {
-                regionRenderLoop();
-            }
         }
 
         void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             picMsUp = true;
+            picBoxClick = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -1392,6 +1516,11 @@ namespace fileOpener
             currentMarkPath.AddEllipse(elipCorner.X, elipCorner.Y, brushSize, brushSize);
         }
 
+        public void updateInbetweenLines(cord previousCord, cord newCord)
+        {
+
+        }
+
         public Boolean previouslyClicked = false;
 
         public void regionRenderLoop()
@@ -1531,7 +1660,7 @@ namespace fileOpener
 
         public void startRenderLoop()
         {
-            for (Boolean i = true; i; i = true)
+            while (true)
             {
                 regionRenderLoop();
             }

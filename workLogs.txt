@@ -2209,3 +2209,33 @@ Things to do for 4/5/2016:
 -1 hour PDN.
 -30 min. IXL.
 -30 min Writing.
+
+[4/5/2016]
+Water:
+-10:00
+-11:30
+-3:00
+-6:00
+-7:10
+
+Today:
+8:20-8:40; Morning Routine.
+8:40-9:10; Mulanting.
+9:10-10:30; Programming: Adding statistics menu.
+10:30-11:00; Reading.
+11:00-12:00; Break.
+12:00-12:30; Lunch.
+12:30-2:00; Programming: Internal stats and stat retrieving.
+2:00-2:30; Break.
+2:30-3:00; Reading.
+3:00-3:30; Programming: Mode selections.
+3:30-3:40; Get ready for soccer.
+3:40-3:50; Talking with Austin.
+3:50-7:10; Soccer.
+7:10-7:40; Dinner.
+7:40-7:55; Writing Logs.
+
+Things to do for 4/6/2016:
+-3 hours programming.
+-1 hour Engineering.
+-30 min IXL.

@@ -127,6 +127,43 @@ namespace chinesePractice
 
         }
 
+        public void updateMode()
+        {
+            Point defaultPoint = new Point(350, 50);
+            Point firstBackup = new Point(380, 200);
+            Point secondBackup = new Point(420, 370);
+            inputModePanel.Visible = false;
+            testModePanel.Visible = false;
+            statisticsPanel.Visible = false;
+            if (inputModeRB.Checked == true)
+            {
+                inputModePanel.Visible = true;
+                inputModePanel.Location = defaultPoint;
+                testModePanel.Location = firstBackup;
+                statisticsPanel.Location = secondBackup;
+            }
+            else
+            {
+                if (testModeRB.Checked == true)
+                {
+                    testModePanel.Visible = true;
+                    testModePanel.Location = defaultPoint;
+                    statisticsPanel.Location = secondBackup;
+                    inputModePanel.Location = firstBackup;
+                }
+                else
+                {
+                    if (statisticsRB.Checked == true)
+                    {
+                        statisticsPanel.Visible = true;
+                        statisticsPanel.Location = defaultPoint;
+                        inputModePanel.Location = firstBackup;
+                        testModePanel.Location = secondBackup;
+                    }
+                }
+            }
+        }
+
 
         private void findStatistics_Click(object sender, EventArgs e)
         {
@@ -140,5 +177,26 @@ namespace chinesePractice
 
             return completeStats;
         }
+
+        private void inputModeRB_CheckedChanged(object sender, EventArgs e)
+        {
+            updateMode();
+        }
+
+        private void testModeRB_CheckedChanged(object sender, EventArgs e)
+        {
+            updateMode();
+        }
+
+        private void statisticsRB_CheckedChanged(object sender, EventArgs e)
+        {
+            updateMode();
+        }
     }
 }
+
+
+//Questions follow below:
+
+
+//How do I edit a certain line of text in a text file?

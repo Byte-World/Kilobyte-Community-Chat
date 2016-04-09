@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace chinesePractice
 {
@@ -80,10 +81,20 @@ namespace chinesePractice
         private void Form1_Load(object sender, EventArgs e)
         {
             currentQuestion = new Question();
+            charFilePath = @"C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\chinesePractice\chinesePractice\Database\characterData.txt";
+            statFilePath = @"C:\Users\Steven\Documents\Steven's Stuff\Coding Things\Repositories\Kilobyte-Community-Chat\chinesePractice\chinesePractice\Database\statisticData.txt";
         }
 
         Question currentQuestion;
+        string charFilePath;
+        string statFilePath;
+        Random r = new Random();
 
+
+        public int randomNumber(int min, int max)
+        {
+            return r.Next(min, max);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string a = inputChar.Text;
@@ -101,7 +112,38 @@ namespace chinesePractice
             inputChar.Text = "";
             inputPinYin.Text = "";
             //setCurrentQuestion(a, b);
+            addNewCharacter(a, b);
+        }
 
+        public void addScoreChar()
+        {
+
+        }
+
+        public void resetScoreChar()
+        {
+
+        }
+
+        public void addNewCharacter(string chineseCharacter, string pinyin)
+        {
+            string[] currentLoadedText = File.ReadAllLines(charFilePath);
+            string[] newLoadingText = new string[currentLoadedText.Length + 1];
+            string addString = chineseCharacter + ":" + pinyin + ":" + "0";
+
+            for (int i = 0; i < newLoadingText.Length; i++)
+            {
+                if (i == newLoadingText.Length - 1)
+                {
+                    newLoadingText[i] = addString;
+                }
+                else
+                {
+                    newLoadingText[i] = currentLoadedText[i];
+                }
+            }
+
+            File.WriteAllLines(charFilePath, newLoadingText);
         }
 
         public void setCurrentQuestion(string insertCharacter, string insertAnswer)
@@ -120,6 +162,8 @@ namespace chinesePractice
             {
                 System.Windows.Forms.MessageBox.Show("Wrong." + " The answer was: " + currentQuestion.pinYin);
             }
+            testInput.Text = "";
+            newQuestion();
         }
 
         public void changeMode(int menuNo)
@@ -168,6 +212,21 @@ namespace chinesePractice
         private void findStatistics_Click(object sender, EventArgs e)
         {
             Stats currentStats = new Stats();
+            DateTime dateStats = datePicker.Value;
+            String dateStatsString = dateStats.ToString();
+            String[] splitStats = dateStatsString.Split(new char[] {' '});
+            String dateOnly = splitStats[0];
+            String[] splitDayItems = dateOnly.Split(new char[] {'/'});
+            currentStats.month = Int32.Parse(splitDayItems[0]);
+            currentStats.day = Int32.Parse(splitDayItems[1]);
+            currentStats.year = Int32.Parse(splitDayItems[2]);
+            
+            Stats fullDisplayStats = retrieveStats(currentStats);
+            problemsAttInt.Text = fullDisplayStats.problemsAttempted.ToString();
+            correctInt.Text = fullDisplayStats.correct.ToString();
+            incorrectInt.Text = fullDisplayStats.incorrect.ToString();
+            string timeDisplayString = fullDisplayStats.hours.ToString() + ":" + fullDisplayStats.minutes.ToString();
+            timeSpentInt.Text = timeDisplayString;
         }
 
         public Stats retrieveStats(Stats partialStats)
@@ -178,6 +237,35 @@ namespace chinesePractice
             return completeStats;
         }
 
+        public void newQuestion()
+        {
+            int itemInt = randomValidNumber();
+            itemInt--;
+            string[] allWords = File.ReadAllLines(charFilePath);
+            string specificItem = allWords[itemInt];
+            string[] specificItems = specificItem.Split(new char[] {':'});
+            string finalCharacter = specificItems[0];
+            string finalPinyin = specificItems[1];
+            setCurrentQuestion(finalCharacter, finalPinyin);
+        }
+
+        public int randomValidNumber()
+        {
+            string[] allWords = File.ReadAllLines(charFilePath);
+            int randomGenNumber = randomNumber(1, allWords.Length + 1);
+            string specificItem = allWords[randomGenNumber - 1];
+            string[] specificItems = specificItem.Split(new char[] {':'});
+            int score = Int32.Parse(specificItems[2]);
+            if (score < 3)
+            {
+                return randomGenNumber;
+            }
+            else
+            {
+                return randomValidNumber();
+            }
+        }
+
         private void inputModeRB_CheckedChanged(object sender, EventArgs e)
         {
             updateMode();
@@ -186,6 +274,20 @@ namespace chinesePractice
         private void testModeRB_CheckedChanged(object sender, EventArgs e)
         {
             updateMode();
+            if (testModeRB.Checked)
+            {
+                newQuestion();
+            }
+            /*
+            if (testModeRB.Checked == true)
+            {
+                for (int i = 0; i < 50; i++)
+                {
+                    int test = randomNumber(1, 3);
+                    System.Windows.Forms.MessageBox.Show(test.ToString());
+                }
+            }
+            */
         }
 
         private void statisticsRB_CheckedChanged(object sender, EventArgs e)

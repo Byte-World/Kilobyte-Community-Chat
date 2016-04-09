@@ -48,16 +48,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.statisticsPanel = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.timeSpentInt = new System.Windows.Forms.Label();
+            this.incorrectInt = new System.Windows.Forms.Label();
+            this.correctInt = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.problemsAttInt = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.findStatistics = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.inputModePanel.SuspendLayout();
@@ -268,53 +268,53 @@
             // 
             this.statisticsPanel.BackColor = System.Drawing.Color.White;
             this.statisticsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.statisticsPanel.Controls.Add(this.label17);
-            this.statisticsPanel.Controls.Add(this.label16);
-            this.statisticsPanel.Controls.Add(this.label15);
+            this.statisticsPanel.Controls.Add(this.timeSpentInt);
+            this.statisticsPanel.Controls.Add(this.incorrectInt);
+            this.statisticsPanel.Controls.Add(this.correctInt);
             this.statisticsPanel.Controls.Add(this.label14);
             this.statisticsPanel.Controls.Add(this.label13);
             this.statisticsPanel.Controls.Add(this.label12);
-            this.statisticsPanel.Controls.Add(this.label11);
+            this.statisticsPanel.Controls.Add(this.problemsAttInt);
             this.statisticsPanel.Controls.Add(this.label10);
             this.statisticsPanel.Controls.Add(this.findStatistics);
-            this.statisticsPanel.Controls.Add(this.dateTimePicker1);
+            this.statisticsPanel.Controls.Add(this.datePicker);
             this.statisticsPanel.Controls.Add(this.label9);
             this.statisticsPanel.Location = new System.Drawing.Point(404, 361);
             this.statisticsPanel.Name = "statisticsPanel";
             this.statisticsPanel.Size = new System.Drawing.Size(288, 177);
             this.statisticsPanel.TabIndex = 3;
             // 
-            // label17
+            // timeSpentInt
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(98, 155);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(31, 17);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "N/A";
+            this.timeSpentInt.AutoSize = true;
+            this.timeSpentInt.Location = new System.Drawing.Point(98, 155);
+            this.timeSpentInt.Name = "timeSpentInt";
+            this.timeSpentInt.Size = new System.Drawing.Size(31, 17);
+            this.timeSpentInt.TabIndex = 10;
+            this.timeSpentInt.Text = "N/A";
             // 
-            // label16
+            // incorrectInt
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(77, 131);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(31, 17);
-            this.label16.TabIndex = 9;
-            this.label16.Text = "N/A";
+            this.incorrectInt.AutoSize = true;
+            this.incorrectInt.Location = new System.Drawing.Point(77, 131);
+            this.incorrectInt.Name = "incorrectInt";
+            this.incorrectInt.Size = new System.Drawing.Size(31, 17);
+            this.incorrectInt.TabIndex = 9;
+            this.incorrectInt.Text = "N/A";
             // 
-            // label15
+            // correctInt
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(66, 110);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(31, 17);
-            this.label15.TabIndex = 8;
-            this.label15.Text = "N/A";
+            this.correctInt.AutoSize = true;
+            this.correctInt.Location = new System.Drawing.Point(66, 110);
+            this.correctInt.Name = "correctInt";
+            this.correctInt.Size = new System.Drawing.Size(31, 17);
+            this.correctInt.TabIndex = 8;
+            this.correctInt.Text = "N/A";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 155);
+            this.label14.Location = new System.Drawing.Point(3, 155);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(84, 17);
             this.label14.TabIndex = 7;
@@ -338,14 +338,14 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Correct:";
             // 
-            // label11
+            // problemsAttInt
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(149, 89);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 17);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "N/A";
+            this.problemsAttInt.AutoSize = true;
+            this.problemsAttInt.Location = new System.Drawing.Point(149, 89);
+            this.problemsAttInt.Name = "problemsAttInt";
+            this.problemsAttInt.Size = new System.Drawing.Size(31, 17);
+            this.problemsAttInt.TabIndex = 4;
+            this.problemsAttInt.Text = "N/A";
             // 
             // label10
             // 
@@ -366,13 +366,13 @@
             this.findStatistics.UseVisualStyleBackColor = true;
             this.findStatistics.Click += new System.EventHandler(this.findStatistics_Click);
             // 
-            // dateTimePicker1
+            // datePicker
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 30);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 1;
+            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePicker.Location = new System.Drawing.Point(3, 30);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(200, 22);
+            this.datePicker.TabIndex = 1;
             // 
             // label9
             // 
@@ -430,14 +430,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel statisticsPanel;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.Label timeSpentInt;
+        private System.Windows.Forms.Label incorrectInt;
+        private System.Windows.Forms.Label correctInt;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label problemsAttInt;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button findStatistics;
     }

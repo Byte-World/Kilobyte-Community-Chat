@@ -420,7 +420,7 @@ namespace chinesePractice
 
                 for (int i = 0; i < newWholeFile.Length; i++)
                 {
-                    if (i == newWholeFile.Length)
+                    if (i == newWholeFile.Length - 1)
                     {
                         newWholeFile[i] = newEntireLine;
                     }

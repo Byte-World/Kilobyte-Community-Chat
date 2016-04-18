@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="chinesePractice.exe" version="1.0.0.4" publicKeyToken="a590204e8fba357d" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="chinesePractice" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="chinesePractice.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="chinesePractice.exe" size="20480">
+      <assemblyIdentity name="chinesePractice" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>dlEl+o8SER4v3kNDUzUOwNT0CrcBRlJdCQURua6Ynmg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="chinesePractice.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Database\characterData.txt" size="3">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Database\statisticData.txt" size="22">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>vHmnfl4xbiotglpUijnhNc/X7PINBywy3bs3ShuAUiw=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=STEVENSLENOVO\Steven" issuerKeyHash="1c9d272cbbe10b5a7d6720f135db1c4926cd15bb" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Nf1JTRpXswuRNieVy97u4uozwXc4M1gB3x6Nt62XkBE=</DigestValue></Reference></SignedInfo><SignatureValue>gFjChl4HnPsd694greNu0K/c9VHISHV8lACFcNUxo0QGgcHOu1zFMTkMfEt39OTOgEM/M0w3w0rZtQKD82BDm9m2B+wlZ8P5XtXaILjTS0qbhdLXePWwzQwTUCE3k26RJPaIyNWz8/E/mOJjD87HwuxiBnUIugOqlhfFWCdzD+Q=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>iEKQBkBpk+ZHb61uLlxFQWBs0AjVBWFCMUG7bMiLCuJmGXnmfZlhbXQXwmuMd3QhzkV2XIINFpJPCOJ28mZy7vI8Wh7poHgqvI/SBkDZ4wzCVoi+b0bM6AygSR23PeZvNoXdozK9lnMLflXGawLY+Q261m7LP4ckMv1gsfZrz4s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="119097adb78d1edf0158333877c133eae2eedecb952736910bb3571a4d49fd35" Description="" Url=""><as:assemblyIdentity name="chinesePractice.exe" version="1.0.0.4" publicKeyToken="a590204e8fba357d" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=STEVENSLENOVO\Steven</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>8hNXnzpQVcSBnGz9QjdKMyFGZRek0AcJvtS5dbi6toA=</DigestValue></Reference></SignedInfo><SignatureValue>TfWthBMV/JnM9vrJtNj980clb+vx+jMPfwXyh0NvvKWMj/M9nDt8qiU25vq8HQTFpcK+tUdZSRI+sc7YtvBZtES/+WFKVs5Kf5Ubb8C6k6bvg+ziRJxZ1Sm/g2fu6UrTk8P+n+1UPLmg7caDDeJJWTsDlJrDFbzus03LEXPQh5E=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>iEKQBkBpk+ZHb61uLlxFQWBs0AjVBWFCMUG7bMiLCuJmGXnmfZlhbXQXwmuMd3QhzkV2XIINFpJPCOJ28mZy7vI8Wh7poHgqvI/SBkDZ4wzCVoi+b0bM6AygSR23PeZvNoXdozK9lnMLflXGawLY+Q261m7LP4ckMv1gsfZrz4s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB6TCCAVKgAwIBAgIQRHLznEdfpYtBAPvfypXR/TANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDHigAUwBUAEUAVgBFAE4AUwBMAEUATgBPAFYATwBcAFMAdABlAHYAZQBuMB4XDTE2MDQxMDIxMTU0OVoXDTE3MDQxMTAzMTU0OVowMzExMC8GA1UEAx4oAFMAVABFAFYARQBOAFMATABFAE4ATwBWAE8AXABTAHQAZQB2AGUAbjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAiEKQBkBpk+ZHb61uLlxFQWBs0AjVBWFCMUG7bMiLCuJmGXnmfZlhbXQXwmuMd3QhzkV2XIINFpJPCOJ28mZy7vI8Wh7poHgqvI/SBkDZ4wzCVoi+b0bM6AygSR23PeZvNoXdozK9lnMLflXGawLY+Q261m7LP4ckMv1gsfZrz4sCAwEAATANBgkqhkiG9w0BAQsFAAOBgQBINdcxyoZMw0sx36dJKbxWq7fxMAdEcNRzbtArOYJg/CgX4mJkwO8yGM5VRrgxmAaetPMT1SnCBrDuj6rdv0UnnUgk+hcpl758kI9qIzyEjPn4ryaM/ybfckFY/b0TeZShs47bxd1i2VU5BzvcwW2qwtNiTA8RUIRP6s3HcKJRiQ==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

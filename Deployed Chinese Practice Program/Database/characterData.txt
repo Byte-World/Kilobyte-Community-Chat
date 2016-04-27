@@ -23,3 +23,16 @@
 身高:shen1 gao1:0
 左:zuo3:0
 右:you4:0
+手腕:shou3 wan4:0
+脖子:bo2 zi:0
+警察:jing3 cha2:0
+距离:ju4 li2:0
+漂流:piao1 liu2:0
+藏:cang2:0
+卡片:ka3 pian4:0
+心愿:xin1 yuan4:0
+乘:cheng2:0
+破:po4:0
+远方:yuan3 fang1:0
+捡:jian3:0
+长城:chang2 cheng2:0

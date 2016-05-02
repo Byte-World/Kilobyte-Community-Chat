@@ -1,16 +1,18 @@
 Good habits:
-1.  Pressure the player I am marking on throw-ins: 4/11/2016: 4%; 4/18/2016: 4%; 4/19/2016: 6%; 4/25/2016: 8%; 4/26/2016: 11%;
-2.  Be wall on corner kicks: 4/11/2016: 11%; 4/18/2016: 11%; 4/19/2016: 11%; 4/26/2016: 13%;
-3.  Being completely honest: 4/17/2016: 7%; 4/18/2016: 7%; 4/19/2016: 7%;
-4.  Don't immediately argue back when someone says something that is against your will: 4/17/2016: 2%; 4/18/2016: 2%; 4/19/2016: 2%;
-5.  Be spread out among your teamates in soccer and don't crowd around them: 4/17/2016: 23%; 4/18/2016: 23%; 4/19/2016: 25%; 4/21/2016: 27%; 4/26/2016: 30%;
-6.  When pressuring the ball, don't run away: 4/17/2016: 17%; 4/18/2016: 17%; 4/19/2016: 18%; 4/21/2016: 20%; 4/25/2016: 22%; 4/26/2016: 23%;
-7.  Plan a project out before taking action: 4/17/2016: 7%; 4/18/2016: 7%; 4/19/2016: 7%;
-8.  When making a project, know everything about it: 4/18/2016: 0%; 4/19/2016: 0%; 4/22/2016: 2%;
-9.  Make sure my shoelace is tied at all times: 4/21/2016: 24%; 4/24/2016: 27%; 4/25/2016: 30%; 4/26/2016: 40%; 4/27/2016: 47%; 4/28/2016: 52%;
-10.  Fill my cup with water after I am done with breakfast: 4/24/2016: 3%; 4/25/2016: 6%; 4/26/2016: 8%; 4/27/2016: 10%; 4/28/2016: 15%;
-11.  When doing work, make sure there are no distractions around: 4/24/2016: 2%;
-12.  After dinner, check if I have anything that needs to be signed/checked: 4/25/2016: 4%;
-13.  In a case in which I have to manage my own time (e.g. Game Time etc.), take responsibility and manage it myself:
-14.  Turn of the light after exercise and bathroom light in the morning: 4/25/2016: 4%; 4/26/2016: 6%; 4/28/2016: 8%;
-15.  Don't read or use a computer in bed:
+1.  In a case in which I have to control my time during IXL/Game Time etc. take responsibility and manage it myself: 0%;
+2.  Be honest about logs: 0%;
+3.  Always wear a jacket when it is cold in the morning: 2%;
+4.  When doing work, make sure there are no distractions around: 2%;
+5.  When making a project, know everything about it: 2%;
+6.  After dinner, check if I have anything that needs to be signed/checked: 4%;
+7.  Plan a project out before taking action: 7%;
+8.  Don't immediately argue back when someone says something that is against your will: 8%;
+9.  Turn of the light after exercise and bathroom light in the morning: 8%;
+10.  Don't read or use a computer in bed: 10%;
+11.  Pressure the player I am marking on throw-ins: 11%
+12.  Be wall on corner kicks: 13%;
+13.  Fill my cup with water after I am done with breakfast: 15%;
+14.  When pressuring the ball, don't run away: 23%;
+15.  Be spread out among your teammates in soccer and don't crowd around them: 30%;
+16.  Make sure my shoelace is tied at all times: 53%;
+
